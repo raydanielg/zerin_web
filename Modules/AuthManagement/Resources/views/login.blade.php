@@ -47,35 +47,22 @@
             display: flex;
             min-height: 100vh;
             width: 100%;
+            align-items: center;
+            justify-content: center;
         }
         .login-left {
-            flex: 1;
-            background-color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-        }
-        .login-right-wrap {
-            flex: 1;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('{{dynamicAsset('public/assets/admin-module/img/media/login-new-bg.png')}}');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            padding: 40px;
-        }
-        @media (max-width: 991px) {
-            .login-right-wrap {
-                display: none;
-            }
-        }
-        .login-container {
             width: 100%;
             max-width: 450px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        @media (max-width: 576px) {
+            .login-left {
+                margin: 20px;
+                padding: 30px;
+            }
         }
         .form-control {
             border-radius: 8px;
@@ -126,70 +113,56 @@
     <form action="{{ route('admin.auth.login') }}" enctype="multipart/form-data" method="POST" id="login-form">
         @csrf
         <div class="login-wrap">
-            <!-- Left Side: Form -->
+            <!-- Centered Form -->
             <div class="login-left">
-                <div class="login-container">
-                    <div class="mb-5">
-                        <h2 class="fw-bold mb-2">{{ translate('Sign_In') }}</h2>
-                        <p class="text-muted">{{ translate('sign_in_to_stay_connected') }}</p>
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="email" class="form-label fw-medium">{{ translate('email') }}</label>
-                        <input type="email" name="email" class="form-control"
-                               placeholder="you@example.com" required id="email"
-                               value="{{ request()->cookie('remember_email') }}">
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="password" class="form-label fw-medium">{{ translate('password') }}</label>
-                        <div class="position-relative">
-                            <input type="password" name="password" id="password" class="form-control"
-                                   placeholder="********"
-                                   value="{{ request()->cookie('remember_password') }}" required>
-                        </div>
-                    </div>
-
-                    <div class="d-flex justify-content-between mb-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ request()->cookie('remember_checked') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="remember">
-                                {{ translate('remember_me') }}
-                            </label>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary w-100 mb-4" id="signInBtn" type="submit">
-                        {{ translate('sign_in') }} →
-                    </button>
-
-                    @if (env('APP_MODE') == 'demo')
-                        <div class="bg-light p-3 rounded mb-4 d-flex justify-content-between align-items-center">
-                            <div>
-                                <div class="small text-muted">{{ translate('email') }}: admin@admin.com</div>
-                                <div class="small text-muted">{{ translate('password') }}: 12345678</div>
-                            </div>
-                            <button type="button" class="btn btn-sm btn-outline-dark" onclick="copyCredentials()">
-                                <i class="bi bi-copy"></i>
-                            </button>
-                        </div>
-                    @endif
+                <div class="mb-5 text-center">
+                    <h2 class="fw-bold mb-2">{{ translate('Sign_In') }}</h2>
+                    <p class="text-muted">{{ translate('sign_in_to_stay_connected') }}</p>
                 </div>
-            </div>
 
-            <!-- Right Side: Background & Content -->
-            <div class="login-right-wrap">
-                <div class="text-center">
-                    <h2 class="display-4 fw-bold mb-4">"{{translate("Every single one of these engineers has to spend literally just one day making projects with Windsurf and it will be like they strapped on rocket boosters.")}}"</h2>
-                    <div class="d-flex align-items-center justify-content-center gap-3">
-                        <div class="text-start">
-                            <h5 class="mb-0">Garry Tan</h5>
-                            <p class="small mb-0 opacity-75">CEO & President, Y Combinator</p>
-                        </div>
+                <div class="mb-4">
+                    <label for="email" class="form-label fw-medium">{{ translate('email') }}</label>
+                    <input type="email" name="email" class="form-control"
+                           placeholder="you@example.com" required id="email"
+                           value="{{ request()->cookie('remember_email') }}">
+                </div>
+
+                <div class="mb-4">
+                    <label for="password" class="form-label fw-medium">{{ translate('password') }}</label>
+                    <div class="position-relative">
+                        <input type="password" name="password" id="password" class="form-control"
+                               placeholder="********"
+                               value="{{ request()->cookie('remember_password') }}" required>
                     </div>
                 </div>
-                <div class="position-absolute bottom-0 end-0 p-4">
-                     <span class="badge bg-white text-dark opacity-75">
+
+                <div class="d-flex justify-content-between mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ request()->cookie('remember_checked') ? 'checked' : '' }}>
+                        <label class="form-check-label" for="remember">
+                            {{ translate('remember_me') }}
+                        </label>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary w-100 mb-4" id="signInBtn" type="submit">
+                    {{ translate('sign_in') }} →
+                </button>
+
+                @if (env('APP_MODE') == 'demo')
+                    <div class="bg-light p-3 rounded mb-4 d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="small text-muted">{{ translate('email') }}: admin@admin.com</div>
+                            <div class="small text-muted">{{ translate('password') }}: 12345678</div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-dark" onclick="copyCredentials()">
+                            <i class="bi bi-copy"></i>
+                        </button>
+                    </div>
+                @endif
+                
+                <div class="text-center mt-4">
+                    <span class="small text-muted">
                         {{ translate('Software_Version') }} : {{ env('SOFTWARE_VERSION') }}
                     </span>
                 </div>
