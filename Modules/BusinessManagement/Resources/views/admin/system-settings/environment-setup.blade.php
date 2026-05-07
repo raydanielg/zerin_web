@@ -135,7 +135,7 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group mb-4">
                                         <label
@@ -155,7 +155,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="d-flex align-items-center justify-content-end flex-wrap gap-10">
                                 <button type="submit" class="btn btn-primary px-4" tabindex="13">{{translate('submit')}}</button>
                             </div>
