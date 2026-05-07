@@ -35,6 +35,64 @@
     <!-- ======= END MAIN STYLES ======= -->
     @include('landing-page.layouts.css')
 
+    <!-- Custom Styles for modern login -->
+    <style>
+        :root {
+            --primary-clr: #007bff;
+        }
+        body {
+            background-color: #f8f9fa;
+        }
+        .login-wrap {
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+        }
+        .login-left {
+            flex: 1;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        .login-right-wrap {
+            flex: 1;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('{{dynamicAsset('public/assets/admin-module/img/media/login-new-bg.png')}}');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            padding: 40px;
+        }
+        @media (max-width: 991px) {
+            .login-right-wrap {
+                display: none;
+            }
+        }
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        .btn-primary {
+            border-radius: 8px;
+            padding: 12px;
+            background-color: #000;
+            border: none;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background-color: #333;
+        }
+    </style>
 </head>
 
 <body>
@@ -65,143 +123,76 @@
 <!-- End Preloader -->
 <!-- Login Form -->
 <div class="login-form d-block">
-    <form action="{{ route('admin.auth.login') }}" enctype="multipart/form-data" method="POST"
-          id="login-form">
+    <form action="{{ route('admin.auth.login') }}" enctype="multipart/form-data" method="POST" id="login-form">
         @csrf
         <div class="login-wrap">
-            <div class="login-left d-flex justify-content-center align-items-center bg-center bg-img"
-                 data-bg-img="{{dynamicAsset('public/assets/admin-module/img/media/login-new-bg.png')}}">
-                <div
-                    class="tf-box max-w-100 h-100 rounded-0 d-flex flex-column gap-3 align-items-center justify-content-center p-4 py-5 p-md-5">
-                    <img class="login-logo" src="{{ onErrorImage(
-                                        $logo,
-                                        dynamicStorage('storage/app/public/business') . '/' . $logo,
-                                        dynamicAsset('public/assets/admin-module/img/logo.png'),
-                                        'business/',
-                                    ) }}" alt="Logo">
-                    <h2 class="text-center absolute-white fs-30 fs-20-mobile">{{translate("Share the")}}
-                        <strong>{{translate("Ride")}}</strong> {{translate("Share the")}} <br>
-                        <strong>{{translate("Journey")}}</strong></h2>
+            <!-- Left Side: Form -->
+            <div class="login-left">
+                <div class="login-container">
+                    <div class="mb-5">
+                        <h2 class="fw-bold mb-2">{{ translate('Sign_In') }}</h2>
+                        <p class="text-muted">{{ translate('sign_in_to_stay_connected') }}</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="email" class="form-label fw-medium">{{ translate('email') }}</label>
+                        <input type="email" name="email" class="form-control"
+                               placeholder="you@example.com" required id="email"
+                               value="{{ request()->cookie('remember_email') }}">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="password" class="form-label fw-medium">{{ translate('password') }}</label>
+                        <div class="position-relative">
+                            <input type="password" name="password" id="password" class="form-control"
+                                   placeholder="********"
+                                   value="{{ request()->cookie('remember_password') }}" required>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ request()->cookie('remember_checked') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="remember">
+                                {{ translate('remember_me') }}
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary w-100 mb-4" id="signInBtn" type="submit">
+                        {{ translate('sign_in') }} →
+                    </button>
+
+                    @if (env('APP_MODE') == 'demo')
+                        <div class="bg-light p-3 rounded mb-4 d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="small text-muted">{{ translate('email') }}: admin@admin.com</div>
+                                <div class="small text-muted">{{ translate('password') }}: 12345678</div>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-dark" onclick="copyCredentials()">
+                                <i class="bi bi-copy"></i>
+                            </button>
+                        </div>
+                    @endif
                 </div>
             </div>
+
+            <!-- Right Side: Background & Content -->
             <div class="login-right-wrap">
-                <div class="d-flex justify-content-end mt-2 me-2">
-                        <span class="badge badge-success fz-12 opacity-75">
-                            {{ translate('Software_Version') }} : {{ env('SOFTWARE_VERSION') }}
-                        </span>
-                </div>
-                <div class="login-right w-100 m-auto px-0 pb-{{ env('APP_MODE') == 'demo' ? '3' : '5' }}">
-                    <div class="inner-div px-4">
-                        <div class="text-center mb-30">
-                            <h2 class="text-uppercase mb-3">{{ businessConfig('business_name')->value ?? null }}</h2>
-                            <h3 class="mb-2">{{ translate('Sign_In') }}</h3>
-                            <p class="opacity-75">{{ translate('sign_in_to_stay_connected') }}
-                            </p>
+                <div class="text-center">
+                    <h2 class="display-4 fw-bold mb-4">"{{translate("Every single one of these engineers has to spend literally just one day making projects with Windsurf and it will be like they strapped on rocket boosters.")}}"</h2>
+                    <div class="d-flex align-items-center justify-content-center gap-3">
+                        <div class="text-start">
+                            <h5 class="mb-0">Garry Tan</h5>
+                            <p class="small mb-0 opacity-75">CEO & President, Y Combinator</p>
                         </div>
-                        <div class="mb-4">
-                            <div class="mb-4">
-                                <div class="">
-                                    <label for="email" class="mb-2">{{ translate('email') }}</label>
-                                    <input type="email" name="email" class="form-control"
-                                           placeholder="{{ translate('email') }}" required=""
-                                           id="email"
-                                           value="{{ request()->cookie('remember_email') }}"
-                                    >
-                                </div>
-                            </div>
-                            <div class="mb-4 input-group_tooltip">
-                                <label for="password"
-                                       class="mb-2">{{ translate('password') }}</label>
-                                <input type="password" name="password" id="password"
-                                       class="form-control"
-                                       placeholder="{{ translate('ex') }}: ********"
-                                       value="{{ request()->cookie('remember_password') }}"
-                                       required>
-                                <i id="password-eye"
-                                   class="mt-3 bi bi-eye-slash-fill text-primary tooltip-icon"></i>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex gap-1 align-items-center">
-                                    <input type="checkbox" name="remember" id="remember" {{ request()->cookie('remember_checked') ? 'checked' : '' }}>
-                                    <label class="lh-1"
-                                           for="remember">{{ translate('remember_me') }}</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <div>
-                                @php($recaptcha = businessConfig('recaptcha')?->value)
-                                @if(isset($recaptcha) && $recaptcha['status'] == 1)
-                                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-
-                                    <input type="hidden" name="set_default_captcha" id="set_default_captcha_value"
-                                           value="0">
-
-                                    <div class="row d-none" id="reload-captcha">
-                                        <div class="col-6 pr-0">
-                                            <input type="text" class="form-control form-control-lg border-none"
-                                                   name="default_captcha_value" value=""
-                                                   placeholder="{{translate('Enter captcha')}}" autocomplete="off">
-                                        </div>
-                                        <div class="col-6 input-icons bg-white rounded cursor-pointer"
-                                             data-toggle="tooltip" data-placement="right"
-                                             title="{{translate('Click to refresh')}}">
-                                            <a class="refresh-recaptcha">
-                                                <img src="{{ URL('/admin/auth/code/captcha/1') }}"
-                                                     class="input-field h-75 rounded-10 border-bottom-0 width-90-percent"
-                                                     id="default_recaptcha_id" alt="{{ translate('recaptcha') }}">
-                                                <i class="tio-refresh icon"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="row p-2">
-                                        <div class="col-6 pr-0">
-                                            <input type="text" class="form-control form-control-lg border-none"
-                                                   name="default_captcha_value" value=""
-                                                   placeholder="{{translate('Enter captcha')}}" autocomplete="off">
-                                        </div>
-                                        <div class="col-6 input-icons bg-white rounded cursor-pointer"
-                                             data-toggle="tooltip" data-placement="right"
-                                             title="{{translate('Click to refresh')}}">
-                                            <a class="refresh-recaptcha">
-                                                <img src="{{ URL('/admin/auth/code/captcha/1') }}"
-                                                     class="input-field h-75 rounded-10 border-bottom-0 width-90-percent"
-                                                     id="default_recaptcha_id" alt="{{ translate('recaptcha') }}">
-                                                <i class="tio-refresh icon"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                        <button
-                            class="btn btn-primary radius-50 text-capitalize fw-semibold w-100 justify-content-center h-45 align-items-center"
-                            id="signInBtn"
-                            type="submit">{{ translate('sign_in') }}</button>
-
                     </div>
-
                 </div>
-
-                @if (env('APP_MODE') == 'demo')
-                    <div
-                        class="login-footer mt-auto d-flex align-items-center justify-content-between mt-3 px-xxl-5 py-xl-3">
-                        <div>
-                            <div>{{ translate('email') }} : admin@admin.com</div>
-                            <div>{{ translate('password') }} : 12345678</div>
-                        </div>
-                        <button type="button" class="btn btn-primary login-copy"
-                                onclick="copyCredentials()">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-copy" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                      d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"/>
-                            </svg>
-                        </button>
-                    </div>
-                @endif
+                <div class="position-absolute bottom-0 end-0 p-4">
+                     <span class="badge bg-white text-dark opacity-75">
+                        {{ translate('Software_Version') }} : {{ env('SOFTWARE_VERSION') }}
+                    </span>
+                </div>
             </div>
         </div>
     </form>

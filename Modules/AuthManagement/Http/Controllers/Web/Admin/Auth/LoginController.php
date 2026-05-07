@@ -50,7 +50,7 @@ class LoginController extends BaseController
             Toastr::error(NO_DATA_200['message']);
             return back();
         }
-        $recaptcha = businessConfig('recaptcha')?->value;
+        /*$recaptcha = businessConfig('recaptcha')?->value;
         if (isset($recaptcha) && $recaptcha['status'] == 1 && !$request?->set_default_captcha) {
             $request->validate([
                 'g-recaptcha-response' => [
@@ -75,7 +75,7 @@ class LoginController extends BaseController
                 Session::forget('default_captcha_code');
                 return back()->withErrors(translate('Captcha Failed'));
             }
-        }
+        }*/
 
         if (isset($user) && Hash::check($request['password'], $user->password)) {
             if (($user && $user->is_active  && $user?->role?->is_active) || $user->user_type === 'super-admin') {
