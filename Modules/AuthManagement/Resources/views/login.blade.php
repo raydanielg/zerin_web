@@ -161,11 +161,11 @@
                     </div>
                 @endif
                 
-                <div class="text-center mt-4">
+                {{-- <div class="text-center mt-4">
                     <span class="small text-muted">
                         {{ translate('Software_Version') }} : {{ env('SOFTWARE_VERSION') }}
                     </span>
-                </div>
+                </div> --}}
             </div>
         </div>
     </form>
