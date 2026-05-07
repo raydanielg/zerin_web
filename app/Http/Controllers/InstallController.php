@@ -116,24 +116,18 @@ class InstallController extends Controller
     public function purchaseCode(Request $request): RedirectResponse
     {
         $request->validate([
-            'username' => 'required|regex:/^\S*$/u',
-            'purchase_key' => 'required|regex:/^\S*$/u',
+            'username' => 'required',
+            'purchase_key' => 'required',
         ]);
 
         $this->setEnvironmentValue('SOFTWARE_ID', 'MTAwMDAwMDA=');
         $this->setEnvironmentValue('BUYER_USERNAME', $request['username']);
         $this->setEnvironmentValue('PURCHASE_CODE', $request['purchase_key']);
 
-        $post = [
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'username' => str_replace(' ', '_', $request['username']),
-            'purchase_key' => str_replace(' ', '', $request['purchase_key']),
-            'domain' => preg_replace("#^[^:/.]*[:/]+#i", "", url('/')),
-        ];
-        $response = $this->dmvf($post);
+        session()->put('username', $request['username']);
+        session()->put('purchase_key', $request['purchase_key']);
 
-        return redirect($response . '?token=' . bcrypt('step_3'));
+        return redirect()->route('step3', ['token' => bcrypt('step_3')]);
     }
 
     public function systemSettings(Request $request): View|Factory|RedirectResponse|Application
@@ -249,7 +243,7 @@ Parcel ID is {ParcelId} You can track this parcel from this link {TrackingLink}"
             // Remove www.
             $url = preg_replace('/^www\./', '', $url);
             $key = base64_encode(random_bytes(32));
-            $output = 'APP_NAME=DriveMond' . time() . '
+            $output = 'APP_NAME=Software' . time() . '
                     APP_ENV=live
                     APP_MODE=live
                     APP_KEY=base64:' . $key . '

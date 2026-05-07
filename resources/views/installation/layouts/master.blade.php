@@ -27,7 +27,6 @@
 
     <!-- Logo -->
     <div class="logo">
-        <img src="{{dynamicAsset('public/assets/installation')}}/assets/img/favicon.svg" alt="">
     </div>
 
     <div class="custom-container">
@@ -37,7 +36,6 @@
         <footer class="footer py-3 mt-4">
             <div class="d-flex flex-column flex-sm-row justify-content-between gap-2 align-items-center">
                 <div class="footer-logo">
-                    <img src="{{dynamicAsset('public/assets/installation')}}/assets/img/logo.svg" width="150" alt="">
                 </div>
                 <p class="copyright-text mb-0">© {{date("Y")}} | {{translate('All Rights Reserved')}}</p>
             </div>
