@@ -303,8 +303,8 @@ Parcel ID is {ParcelId} You can track this parcel from this link {TrackingLink}"
                     MIX_REVERB_PORT="${REVERB_PORT}"
                     MIX_REVERB_SCHEME="${REVERB_SCHEME}"
 
-                    PURCHASE_CODE=' . session('purchase_key') . '
-                    BUYER_USERNAME=' . session('username') . '
+                    PURCHASE_CODE=' . (session('purchase_key') ?? 'N/A') . '
+                    BUYER_USERNAME=' . (session('username') ?? 'N/A') . '
                     SOFTWARE_ID=MTAwMDAwMDA=
 
                     SOFTWARE_VERSION=3.1
