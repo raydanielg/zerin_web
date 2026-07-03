@@ -526,6 +526,13 @@
     <script src="{{dynamicAsset('public/assets/admin-module/js/zone-management/zone/index.js') }}"></script>
     <script>
         "use strict";
+        function auto_grow() {
+            let element = document.getElementById("coordinates");
+            if (element) {
+                element.style.height = "5px";
+                element.style.height = (element.scrollHeight) + "px";
+            }
+        }
         //zone form submit
         $('#zone_form').on('submit', function (e) {
             if ($('#coordinates').val() === '') {
@@ -568,7 +575,7 @@
             controlUI.appendChild(controlText);
             // Setup the click event listeners: simply set the map to Chicago.
             controlUI.addEventListener("click", () => {
-                lastPolygon.setMap(null);
+                if (lastPolygon) lastPolygon.setMap(null);
                 $('#coordinates').val('');
             });
         }

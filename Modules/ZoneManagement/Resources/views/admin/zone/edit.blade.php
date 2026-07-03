@@ -143,7 +143,7 @@
             controlUI.appendChild(controlText);
             // Setup the click event listeners: simply set the map to Chicago.
             controlUI.addEventListener("click", () => {
-                lastpolygon.setMap(null);
+                if (lastpolygon) lastpolygon.setMap(null);
                 $('#coordinates').val('');
 
             });
@@ -307,7 +307,7 @@
 
         $('#reset_btn').click(function () {
             $('#name').val(null);
-            lastpolygon.setMap(null);
+            if (lastpolygon) lastpolygon.setMap(null);
             $('#coordinates').val(null);
         })
 
