@@ -226,4 +226,52 @@ class CustomerController extends Controller
         ];
         return response()->json($data);
     }
+
+    public function index(Request $request): JsonResponse
+    {
+        $limit = $request->input('limit', 10);
+        $offset = $request->input('offset', 0);
+
+        $customers = $this->customerService->index(
+            criteria: ['status' => 'all'],
+            limit: $limit,
+            offset: $offset
+        );
+
+        $customers = CustomerResource::collection($customers);
+
+        return response()->json(responseFormatter(DEFAULT_200, $customers, $limit, $offset));
+    }
+
+    public function show(int|string $id): JsonResponse
+    {
+        $customer = $this->customerService->findOne(id: $id);
+        if (!$customer) {
+            return response()->json(responseFormatter(DEFAULT_404), 404);
+        }
+        return response()->json(responseFormatter(DEFAULT_200, new CustomerResource($customer)));
+    }
+
+    public function allUsers(Request $request): JsonResponse
+    {
+        $limit = $request->input('limit', 10);
+        $offset = $request->input('offset', 0);
+
+        $users = \Modules\UserManagement\Entities\User::query()
+            ->whereIn('user_type', [CUSTOMER, DRIVER])
+            ->orderBy('created_at', 'desc')
+            ->limit($limit + 1)
+            ->offset($offset)
+            ->get();
+
+        $hasMore = $users->count() > $limit;
+        $users = $users->take($limit);
+
+        $data = [
+            'users' => $users,
+            'has_more' => $hasMore,
+        ];
+
+        return response()->json(responseFormatter(DEFAULT_200, $data, $limit, $offset));
+    }
 }

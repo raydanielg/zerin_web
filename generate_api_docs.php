@@ -51,6 +51,7 @@ foreach ($routes as $route) {
         'name' => $route->getName(),
         'action' => $action,
         'middleware' => $middlewareFlat,
+        'route' => $route,
     ];
 }
 
@@ -85,7 +86,7 @@ foreach ($grouped as $module => $routes) {
     $grouped[$module] = $routes;
 }
 
-function getPayloadRules($controller, $method) {
+function getPayloadRules($controller, $method, $route) {
     if (!class_exists($controller)) {
         return null;
     }
@@ -94,6 +95,8 @@ function getPayloadRules($controller, $method) {
     } catch (Throwable $e) {
         return null;
     }
+
+    // Try to resolve rules from a FormRequest parameter.
     $params = $ref->getParameters();
     foreach ($params as $param) {
         $type = $param->getType();
@@ -101,7 +104,11 @@ function getPayloadRules($controller, $method) {
             $className = $type->getName();
             if (is_subclass_of($className, Illuminate\Foundation\Http\FormRequest::class)) {
                 try {
-                    $instance = new $className();
+                    $baseRequest = app('request');
+                    $instance = $className::createFrom($baseRequest, $baseRequest);
+                    $instance->setRouteResolver(function () use ($route) {
+                        return $route;
+                    });
                     if (method_exists($instance, 'rules')) {
                         $rules = $instance->rules();
                         if (is_array($rules)) {
@@ -114,7 +121,79 @@ function getPayloadRules($controller, $method) {
             }
         }
     }
+
+    // Fallback: extract inline $request->validate(...) calls from the controller method source.
+    $file = $ref->getFileName();
+    $startLine = $ref->getStartLine();
+    $endLine = $ref->getEndLine();
+    if ($file && $startLine && $endLine) {
+        $lines = file($file);
+        $source = implode('', array_slice($lines, $startLine - 1, $endLine - $startLine + 1));
+        $inline = extractInlineValidation($source);
+        if ($inline) {
+            return ['inline' => true, 'rules' => $inline];
+        }
+    }
+
     return null;
+}
+
+function extractInlineValidation($source) {
+    $rules = [];
+    // Match $request->validate([...]) or $this->validate($request, [...]) or Validator::make($request, [...])
+    if (preg_match_all('/\$[a-zA-Z_][a-zA-Z0-9_]*\s*->\s*validate\s*\(\s*(?:\$[a-zA-Z_][a-zA-Z0-9_]*\s*,\s*)?(\[.*?\])\s*\)/s', $source, $matches, PREG_SET_ORDER)) {
+        foreach ($matches as $match) {
+            $arraySrc = $match[1];
+            $parsed = parseShortArray($arraySrc);
+            if ($parsed) {
+                $rules = array_merge($rules, $parsed);
+            }
+        }
+    }
+    return $rules ?: null;
+}
+
+function parseShortArray($src) {
+    // Very simple parser for a single-level PHP short array literal.
+    // Removes surrounding [ ] and splits top-level comma-separated key => value pairs.
+    $src = trim($src);
+    if (!str_starts_with($src, '[') || !str_ends_with($src, ']')) {
+        return null;
+    }
+    $src = substr($src, 1, -1);
+    $pairs = [];
+    $depth = 0;
+    $buffer = '';
+    $len = strlen($src);
+    for ($i = 0; $i < $len; $i++) {
+        $char = $src[$i];
+        if ($char === '[' || $char === '(' || $char === '{') {
+            $depth++;
+        } elseif ($char === ']' || $char === ')' || $char === '}') {
+            $depth--;
+        } elseif ($char === ',' && $depth === 0) {
+            $pairs[] = trim($buffer);
+            $buffer = '';
+            continue;
+        }
+        $buffer .= $char;
+    }
+    if (trim($buffer) !== '') {
+        $pairs[] = trim($buffer);
+    }
+
+    $result = [];
+    foreach ($pairs as $pair) {
+        if (!str_contains($pair, '=>')) {
+            continue;
+        }
+        [$key, $value] = explode('=>', $pair, 2);
+        $key = trim($key);
+        $value = trim($value);
+        // Strip leading/trailing quotes and concatenations are kept as-is for readability.
+        $result[$key] = $value;
+    }
+    return $result ?: null;
 }
 
 function rulesToMarkdown($rules) {
@@ -123,7 +202,15 @@ function rulesToMarkdown($rules) {
     }
     $md = "| Field | Rules |\n|-------|-------|\n";
     foreach ($rules as $field => $rule) {
-        $ruleStr = is_array($rule) ? implode(', ', $rule) : (string) $rule;
+        if (is_array($rule)) {
+            $parts = [];
+            foreach ($rule as $r) {
+                $parts[] = is_object($r) ? get_class($r) : (string) $r;
+            }
+            $ruleStr = implode(', ', $parts);
+        } else {
+            $ruleStr = is_object($rule) ? get_class($rule) : (string) $rule;
+        }
         $md .= "| `{$field}` | {$ruleStr} |\n";
     }
     return $md;
@@ -167,16 +254,22 @@ foreach ($grouped as $module => $routes) {
         $md .= "- **Controller:** `{$action}`\n";
         $md .= "- **Middleware:** {$middlewareStr}\n\n";
 
-        $payload = getPayloadRules($route['controller'], $route['method']);
+        $hasPost = count(array_intersect($route['methods'], ['POST', 'PUT', 'PATCH'])) > 0;
+        $payload = getPayloadRules($route['controller'], $route['method'], $route['route']);
         if ($payload) {
             if (isset($payload['error'])) {
                 $md .= "**Validation (FormRequest):** `{$payload['form_request']}` — {$payload['error']}\n\n";
-            } else {
+            } elseif (isset($payload['form_request'])) {
                 $md .= "**Validation (FormRequest):** `{$payload['form_request']}`\n\n";
                 $md .= rulesToMarkdown($payload['rules']) . "\n";
+            } elseif (isset($payload['inline'])) {
+                $md .= "**Inline validation (`\$request->validate`)**\n\n";
+                $md .= rulesToMarkdown($payload['rules']) . "\n";
             }
+        } elseif ($hasPost) {
+            $md .= "**Payload:** No documented validation found. Check the controller method for request parameters.\n\n";
         } else {
-            $md .= "**Payload:** No FormRequest validation found. Check the controller method for request parameters.\n\n";
+            $md .= "**Payload:** No payload required (query parameters may be accepted).\n\n";
         }
     }
 }

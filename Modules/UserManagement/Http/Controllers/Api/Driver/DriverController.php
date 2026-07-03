@@ -229,4 +229,29 @@ class DriverController extends Controller
 
         return redirect($redirectLink);
     }
+
+    public function index(Request $request): JsonResponse
+    {
+        $limit = $request->input('limit', 10);
+        $offset = $request->input('offset', 0);
+
+        $drivers = $this->driverService->index(
+            criteria: ['status' => 'all'],
+            limit: $limit,
+            offset: $offset
+        );
+
+        $drivers = DriverResource::collection($drivers);
+
+        return response()->json(responseFormatter(DEFAULT_200, $drivers, $limit, $offset));
+    }
+
+    public function show(int|string $id): JsonResponse
+    {
+        $driver = $this->driverService->findOne(id: $id);
+        if (!$driver) {
+            return response()->json(responseFormatter(DEFAULT_404), 404);
+        }
+        return response()->json(responseFormatter(DEFAULT_200, DriverResource::make($driver)));
+    }
 }

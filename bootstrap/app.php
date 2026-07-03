@@ -9,6 +9,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use App\Http\Middleware\{Authenticate,
+    ApiKeyMiddleware,
     EncryptCookies,
     GlobalMiddleware,
     Localization,
@@ -77,6 +78,7 @@ $app = Application::configure(basePath: dirname(__DIR__))
             // Custom middlewares
             'admin'=>AdminMiddleware::class,
             'maintenance_mode' => MaintenanceModeMiddleware::class,
+            'api.key' => ApiKeyMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

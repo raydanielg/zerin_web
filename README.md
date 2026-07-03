@@ -1,6 +1,6 @@
 # API Documentation
 
-> Auto-generated from the Laravel route list on **2026-07-03 12:24:22**.  
+> Auto-generated from the Laravel route list on **2026-07-03 12:52:23**.  
 > Total API endpoints documented: **211**.  
 > Base URL: append the `URI` to your application domain. Routes below are registered under the `api` middleware group (no `/api/` prefix is required unless your `RouteServiceProvider` adds it).
 
@@ -26,7 +26,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@userExistOrNotChecking`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/auth/external-login`
 
@@ -34,7 +34,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@customerLoginFromMart`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/auth/external-registration`
 
@@ -42,7 +42,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@customerRegistrationFromMart`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/auth/firebase-otp-verification`
 
@@ -50,7 +50,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@firebaseOtpVerification`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/auth/forget-password`
 
@@ -58,7 +58,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@forgetPassword`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/auth/login`
 
@@ -66,12 +66,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@login`
 - **Middleware:** `api`
 
-**Validation (FormRequest):** `Modules\AuthManagement\Http\Requests\AuthApiRequest`
-
-| Field | Rules |
-|-------|-------|
-| `phone_or_email` | required |
-| `password` | required |
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/auth/otp-login`
 
@@ -79,7 +74,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@otpLogin`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/auth/otp-verification`
 
@@ -87,7 +82,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@otpVerification`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/auth/registration`
 
@@ -95,7 +90,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@register`
 - **Middleware:** `api`
 
-**Validation (FormRequest):** `Modules\AuthManagement\Http\Requests\UserRegisterApiRequest` — Dynamic rules could not be resolved: Call to a member function getPrefix() on null
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/auth/registration-from-otp`
 
@@ -103,7 +98,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@registrationFromOtp`
 - **Middleware:** `api`
 
-**Validation (FormRequest):** `Modules\AuthManagement\Http\Requests\RegistrationFromOtpStoreRequest` — Dynamic rules could not be resolved: Call to a member function getPrefix() on null
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/auth/reset-password`
 
@@ -111,7 +106,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@resetPassword`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/auth/send-otp`
 
@@ -119,7 +114,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@sendOtp`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/auth/social-login`
 
@@ -127,7 +122,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@customerSocialLogin`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/auth/update-data`
 
@@ -135,7 +130,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@updateData`
 - **Middleware:** `api`
 
-**Validation (FormRequest):** `Modules\AuthManagement\Http\Requests\UserRegisterApiRequest` — Dynamic rules could not be resolved: Call to a member function getPrefix() on null
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `customer/update/fcm-token`
 
@@ -143,7 +138,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@updateFcmToken`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/auth/check`
 
@@ -151,7 +146,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@userExistOrNotChecking`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/auth/firebase-otp-verification`
 
@@ -159,7 +154,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@firebaseOtpVerification`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/auth/forget-password`
 
@@ -167,7 +162,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@forgetPassword`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/auth/login`
 
@@ -175,12 +170,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@login`
 - **Middleware:** `api`
 
-**Validation (FormRequest):** `Modules\AuthManagement\Http\Requests\AuthApiRequest`
-
-| Field | Rules |
-|-------|-------|
-| `phone_or_email` | required |
-| `password` | required |
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/auth/otp-verification`
 
@@ -188,7 +178,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@otpVerification`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/auth/registration`
 
@@ -196,7 +186,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@register`
 - **Middleware:** `api`
 
-**Validation (FormRequest):** `Modules\AuthManagement\Http\Requests\UserRegisterApiRequest` — Dynamic rules could not be resolved: Call to a member function getPrefix() on null
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/auth/registration-from-otp`
 
@@ -204,7 +194,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@registrationFromOtp`
 - **Middleware:** `api`
 
-**Validation (FormRequest):** `Modules\AuthManagement\Http\Requests\RegistrationFromOtpStoreRequest` — Dynamic rules could not be resolved: Call to a member function getPrefix() on null
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/auth/reset-password`
 
@@ -212,7 +202,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@resetPassword`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/auth/send-otp`
 
@@ -220,7 +210,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@sendOtp`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/auth/update-data`
 
@@ -228,7 +218,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@updateData`
 - **Middleware:** `api`
 
-**Validation (FormRequest):** `Modules\AuthManagement\Http\Requests\UserRegisterApiRequest` — Dynamic rules could not be resolved: Call to a member function getPrefix() on null
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `driver/update/fcm-token`
 
@@ -236,7 +226,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@updateFcmToken`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `user/change-password`
 
@@ -244,7 +234,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@changePassword`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `user/delete`
 
@@ -252,7 +242,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@delete`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `user/logout`
 
@@ -260,7 +250,7 @@
 - **Controller:** `Modules\AuthManagement\Http\Controllers\Api\AuthController@logout`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ## BusinessManagement
 
@@ -270,7 +260,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\ConfigurationController@getConfiguration`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/config/calculate-distance`
 
@@ -278,7 +268,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@calculateDistance`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/config/cancellation-reason-list`
 
@@ -286,7 +276,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@cancellationReasonList`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/config/distance-api`
 
@@ -294,7 +284,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@distanceApi`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/config/geocode-api`
 
@@ -302,7 +292,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@geocodeApi`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/config/get-payment-methods`
 
@@ -310,7 +300,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@getPaymentMethods`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `customer/config/get-routes`
 
@@ -318,7 +308,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@getRoutes`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/config/get-zone-id`
 
@@ -326,7 +316,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@getZone`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/config/other-emergency-contact-list`
 
@@ -334,7 +324,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@otherEmergencyContactList`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/config/parcel-cancellation-reason-list`
 
@@ -342,7 +332,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@parcelCancellationReasonList`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/config/parcel-refund-reason-list`
 
@@ -350,7 +340,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@parcelRefundReasonList`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/config/place-api-autocomplete`
 
@@ -358,7 +348,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@placeApiAutocomplete`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/config/place-api-details`
 
@@ -366,7 +356,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@placeApiDetails`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/config/safety-alert-reason-list`
 
@@ -374,7 +364,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@safetyAlertReasonList`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/config/safety-precaution-list`
 
@@ -382,7 +372,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@safetyPrecautionList`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/configuration`
 
@@ -390,7 +380,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@configuration`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/pages/{page_name}`
 
@@ -398,7 +388,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@pages`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/config/cancellation-reason-list`
 
@@ -406,7 +396,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@cancellationReasonList`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/config/distance-api`
 
@@ -414,7 +404,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@distanceApi`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/config/geocode-api`
 
@@ -422,7 +412,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@geocodeApi`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/config/get-payment-methods`
 
@@ -430,7 +420,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@getPaymentMethods`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/config/get-zone-id`
 
@@ -438,7 +428,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@getZone`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/config/other-emergency-contact-list`
 
@@ -446,7 +436,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@otherEmergencyContactList`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/config/parcel-cancellation-reason-list`
 
@@ -454,7 +444,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@parcelCancellationReasonList`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/config/place-api-autocomplete`
 
@@ -462,7 +452,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@placeApiAutocomplete`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/config/place-api-details`
 
@@ -470,7 +460,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@placeApiDetails`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/config/predefined-question-answer-list`
 
@@ -478,7 +468,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@predefinedQuestionAnswerList`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/config/safety-alert-reason-list`
 
@@ -486,7 +476,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@safetyAlertReasonList`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/config/safety-precaution-list`
 
@@ -494,7 +484,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@safetyPrecautionList`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/configuration`
 
@@ -502,7 +492,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@configuration`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `driver/get-routes`
 
@@ -510,7 +500,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Driver\ConfigController@getRoutes`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `get-external-configurations`
 
@@ -518,7 +508,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\ConfigurationController@getExternalConfiguration`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `store-configurations`
 
@@ -526,7 +516,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\ConfigurationController@updateConfiguration`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `user/location/save`
 
@@ -534,12 +524,7 @@
 - **Controller:** `Modules\BusinessManagement\Http\Controllers\Api\Customer\ConfigController@userLastLocation`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\BusinessManagement\Http\Requests\UserLocationStore`
-
-| Field | Rules |
-|-------|-------|
-| `latitude` | required |
-| `longitude` | required |
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ## ChattingManagement
 
@@ -549,7 +534,7 @@
 - **Controller:** `Modules\ChattingManagement\Http\Controllers\Api\ChattingController@channelList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/chat/conversation`
 
@@ -557,7 +542,7 @@
 - **Controller:** `Modules\ChattingManagement\Http\Controllers\Api\ChattingController@conversation`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `customer/chat/create-channel`
 
@@ -565,7 +550,7 @@
 - **Controller:** `Modules\ChattingManagement\Http\Controllers\Api\ChattingController@createChannel`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/chat/find-channel`
 
@@ -573,7 +558,7 @@
 - **Controller:** `Modules\ChattingManagement\Http\Controllers\Api\ChattingController@findChannel`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `customer/chat/send-message`
 
@@ -581,7 +566,7 @@
 - **Controller:** `Modules\ChattingManagement\Http\Controllers\Api\ChattingController@sendMessage`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\ChattingManagement\Http\Requests\StoreSendMessageRequest` — Dynamic rules could not be resolved: Call to a member function getPrefix() on null
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/chat/channel-list`
 
@@ -589,7 +574,7 @@
 - **Controller:** `Modules\ChattingManagement\Http\Controllers\Api\ChattingController@channelList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/chat/conversation`
 
@@ -597,7 +582,7 @@
 - **Controller:** `Modules\ChattingManagement\Http\Controllers\Api\ChattingController@conversation`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `driver/chat/create-channel`
 
@@ -605,7 +590,7 @@
 - **Controller:** `Modules\ChattingManagement\Http\Controllers\Api\ChattingController@createChannel`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `driver/chat/create-channel-with-admin`
 
@@ -613,7 +598,7 @@
 - **Controller:** `Modules\ChattingManagement\Http\Controllers\Api\ChattingController@createChannelWithAdmin`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/chat/find-channel`
 
@@ -621,7 +606,7 @@
 - **Controller:** `Modules\ChattingManagement\Http\Controllers\Api\ChattingController@findChannel`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `driver/chat/send-message`
 
@@ -629,7 +614,7 @@
 - **Controller:** `Modules\ChattingManagement\Http\Controllers\Api\ChattingController@sendMessage`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\ChattingManagement\Http\Requests\StoreSendMessageRequest` — Dynamic rules could not be resolved: Call to a member function getPrefix() on null
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `driver/chat/send-message-to-admin`
 
@@ -637,7 +622,7 @@
 - **Controller:** `Modules\ChattingManagement\Http\Controllers\Api\ChattingController@sendMessageToAdminFromDriver`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\ChattingManagement\Http\Requests\StoreSendMessageRequest` — Dynamic rules could not be resolved: Call to a member function getPrefix() on null
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `driver/chat/send-predefined-question-to-admin`
 
@@ -645,7 +630,7 @@
 - **Controller:** `Modules\ChattingManagement\Http\Controllers\Api\ChattingController@sendPredefinedQuestionToAdminFromDriver`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ## Other
 
@@ -655,7 +640,7 @@
 - **Controller:** `\Illuminate\Broadcasting\BroadcastController@authenticate`
 - **Middleware:** `auth:api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `track/{token}/data`
 
@@ -663,7 +648,7 @@
 - **Controller:** `App\Http\Controllers\RealTimeLocationSharingController@updatePolyline`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ## ParcelManagement
 
@@ -673,7 +658,7 @@
 - **Controller:** `Modules\ParcelManagement\Http\Controllers\Api\Customer\ParcelCategoryController@categoryFareList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/parcel/suggested-vehicle-category`
 
@@ -681,7 +666,7 @@
 - **Controller:** `Modules\ParcelManagement\Http\Controllers\Api\Customer\ParcelController@suggestedVehicleCategory`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/parcel/vehicle`
 
@@ -689,7 +674,7 @@
 - **Controller:** `Modules\ParcelManagement\Http\Controllers\Api\Customer\ParcelController@vehicleList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ## PromotionManagement
 
@@ -699,7 +684,7 @@
 - **Controller:** `Modules\PromotionManagement\Http\Controllers\Api\Customer\BannerSetupController@list`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `customer/banner/update-redirection-count`
 
@@ -707,7 +692,7 @@
 - **Controller:** `Modules\PromotionManagement\Http\Controllers\Api\Customer\BannerSetupController@RedirectionCount`
 - **Middleware:** `api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/coupon/apply`
 
@@ -715,7 +700,7 @@
 - **Controller:** `Modules\PromotionManagement\Http\Controllers\Api\Customer\CouponSetupController@apply`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/coupon/list`
 
@@ -723,7 +708,7 @@
 - **Controller:** `Modules\PromotionManagement\Http\Controllers\Api\Customer\CouponSetupController@list`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/discount/list`
 
@@ -731,7 +716,7 @@
 - **Controller:** `Modules\PromotionManagement\Http\Controllers\Api\Customer\DiscountSetupController@list`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ## ReviewModule
 
@@ -741,7 +726,7 @@
 - **Controller:** `Modules\ReviewModule\Http\Controllers\Api\ReviewController@checkSubmission`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/review/list`
 
@@ -749,7 +734,7 @@
 - **Controller:** `Modules\ReviewModule\Http\Controllers\Api\ReviewController@index`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `customer/review/store`
 
@@ -757,13 +742,7 @@
 - **Controller:** `Modules\ReviewModule\Http\Controllers\Api\ReviewController@store`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\ReviewModule\Http\Requests\ReviewRequest`
-
-| Field | Rules |
-|-------|-------|
-| `ride_request_id` | required |
-| `rating` | required|numeric|min:1|max:5 |
-| `feedback` | sometimes |
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/review/list`
 
@@ -771,7 +750,7 @@
 - **Controller:** `Modules\ReviewModule\Http\Controllers\Api\ReviewController@index`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `driver/review/save/{id}`
 
@@ -779,7 +758,7 @@
 - **Controller:** `Modules\ReviewModule\Http\Controllers\Api\ReviewController@save`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/review/store`
 
@@ -787,13 +766,7 @@
 - **Controller:** `Modules\ReviewModule\Http\Controllers\Api\ReviewController@store`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\ReviewModule\Http\Requests\ReviewRequest`
-
-| Field | Rules |
-|-------|-------|
-| `ride_request_id` | required |
-| `rating` | required|numeric|min:1|max:5 |
-| `feedback` | sometimes |
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ## TransactionManagement
 
@@ -803,7 +776,7 @@
 - **Controller:** `Modules\TransactionManagement\Http\Controllers\Api\Customer\TransactionController@list`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/transaction/referral-earning-list`
 
@@ -811,7 +784,7 @@
 - **Controller:** `Modules\TransactionManagement\Http\Controllers\Api\Customer\TransactionController@referralEarningHistory`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/transaction/cash-collect-list`
 
@@ -819,7 +792,7 @@
 - **Controller:** `Modules\TransactionManagement\Http\Controllers\Api\Driver\DriverTransactionController@cashCollectTransactionHistory`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/transaction/list`
 
@@ -827,7 +800,7 @@
 - **Controller:** `Modules\TransactionManagement\Http\Controllers\Api\Driver\DriverTransactionController@list`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/transaction/payable-list`
 
@@ -835,7 +808,7 @@
 - **Controller:** `Modules\TransactionManagement\Http\Controllers\Api\Driver\DriverTransactionController@payableTransactionHistory`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/transaction/referral-earning-list`
 
@@ -843,7 +816,7 @@
 - **Controller:** `Modules\TransactionManagement\Http\Controllers\Api\Driver\DriverTransactionController@referralEarningHistory`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/transaction/wallet-list`
 
@@ -851,7 +824,7 @@
 - **Controller:** `Modules\TransactionManagement\Http\Controllers\Api\Driver\DriverTransactionController@walletTransactionHistory`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ## TripManagement
 
@@ -861,7 +834,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@driversNearMe`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `customer/parcel/refund/create`
 
@@ -869,16 +842,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\ParcelRefundController@createParcelRefundRequest`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\TripManagement\Http\Requests\StoreParcelRefundRequest`
-
-| Field | Rules |
-|-------|-------|
-| `trip_request_id` | required |
-| `reason` | nullable|max:255 |
-| `parcel_approximate_price` | required|numeric |
-| `attachments` | sometimes|array |
-| `attachments.*` | mimes:png,jpg,jpeg,webp,gifmp4,mkv,avi,mov,webm|max:2048 |
-| `customer_note` | nullable|max:255 |
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `customer/ride/arrival-time`
 
@@ -886,7 +850,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@arrivalTime`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/ride/bidding-list/{trip_request_id}`
 
@@ -894,7 +858,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@biddingList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `customer/ride/coordinate-arrival`
 
@@ -902,7 +866,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@coordinateArrival`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/ride/create`
 
@@ -910,47 +874,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@createRideRequest`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\TripManagement\Http\Requests\RideRequestCreate`
-
-| Field | Rules |
-|-------|-------|
-| `pickup_coordinates` | required_if:trip_request_id,null |
-| `destination_coordinates` | required_if:trip_request_id,null |
-| `customer_coordinates` | required_if:trip_request_id,null |
-| `customer_request_coordinates` | required_if:trip_request_id,null |
-| `pickup_address` | required_if:trip_request_id,null |
-| `destination_address` | required_if:trip_request_id,null |
-| `estimated_distance` | required_if:trip_request_id,null |
-| `estimated_time` | required_if:trip_request_id,null |
-| `estimated_fare` | required_if:trip_request_id,null|numeric|max:99999999 |
-| `bid` | required|bool |
-| `actual_fare` | nullable, , numeric, max:99999999 |
-| `return_fee` |  |
-| `cancellation_fee` |  |
-| `vehicle_category_id` | nullable, , uuid |
-| `note` | sometimes |
-| `type` | required|in:parcel,ride_request |
-| `ride_request_type` | , nullable, in:"regular","scheduled" |
-| `scheduled_at` | required_if:ride_request_type,scheduled |
-| `pickup_note` | nullable|string|max:100 |
-| `sender_name` | required_if:type,parcel |
-| `sender_phone` | required_if:type,parcel |
-| `sender_address` | required_if:type,parcel |
-| `receiver_name` | required_if:type,parcel |
-| `receiver_phone` | required_if:type,parcel |
-| `receiver_address` | required_if:type,parcel |
-| `parcel_category_id` | required_if:type,parcel |
-| `weight` | required_if:type,parcel |
-| `payer` | required_if:type,parcel |
-| `extra_estimated_fare` | sometimes|numeric |
-| `extra_discount_fare` | sometimes|numeric |
-| `extra_discount_amount` | sometimes|numeric |
-| `extra_return_fee` | sometimes|numeric |
-| `extra_cancellation_fee` | sometimes|numeric |
-| `extra_fare_amount` | sometimes|numeric |
-| `extra_fare_fee` | sometimes|numeric |
-| `encoded_polyline` | sometimes |
-| `zone_id` | required|uuid|exists:zones,id |
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/ride/details/{trip_request_id}`
 
@@ -958,7 +882,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@rideDetails`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/ride/digital-payment`
 
@@ -966,7 +890,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\PaymentController@digitalPayment`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `customer/ride/edit-scheduled-trip/{trip_request_id}`
 
@@ -974,7 +898,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@editScheduledTrip`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/ride/final-fare`
 
@@ -982,7 +906,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@finalFareCalculation`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `customer/ride/get-estimated-fare`
 
@@ -990,17 +914,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@getEstimatedFare`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\TripManagement\Http\Requests\GetEstimatedFaresOrNotRequest`
-
-| Field | Rules |
-|-------|-------|
-| `pickup_coordinates` | required |
-| `destination_coordinates` | required |
-| `pickup_address` | required |
-| `destination_address` | required |
-| `type` | required|in:parcel,ride_request |
-| `parcel_weight` | required_if:type,parcel |
-| `ride_request_type` | , nullable, in:"regular","scheduled" |
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `customer/ride/ignore-bidding`
 
@@ -1008,7 +922,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@ignoreBidding`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/ride/list`
 
@@ -1016,16 +930,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@rideList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\BusinessManagement\Http\Requests\RideListRequest`
-
-| Field | Rules |
-|-------|-------|
-| `filter` | in:"today","previous_day","this_week","last_week","last_7_days","this_month","last_month","this_year","all_time","custom_date" |
-| `status` | in:"all","pending","ongoing","completed","cancelled","returned" |
-| `start` | required_if:filter,==,custom_date|required_with:end |
-| `end` | required_if:filter,==,custom_date|required_with:end |
-| `limit` | required|numeric |
-| `offset` | required|numeric |
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/ride/ongoing-parcel-list`
 
@@ -1033,7 +938,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@pendingParcelList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/ride/payment`
 
@@ -1041,7 +946,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\PaymentController@payment`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/ride/pending-ride-list`
 
@@ -1049,7 +954,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@pendingRideList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `customer/ride/received-returning-parcel/{trip_request_id}`
 
@@ -1057,7 +962,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@receivedReturningParcel`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/ride/ride-resume-status`
 
@@ -1065,7 +970,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@rideResumeStatus`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `customer/ride/track-location`
 
@@ -1073,7 +978,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@trackLocation`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/ride/trip-action`
 
@@ -1081,7 +986,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@requestAction`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/ride/unpaid-parcel-list`
 
@@ -1089,7 +994,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@unpaidParcelRequest`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `customer/ride/update-status/{trip_request_id}`
 
@@ -1097,7 +1002,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@rideStatusUpdate`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `customer/safety-alert/mark-as-solved/{trip_request_id}`
 
@@ -1105,7 +1010,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\SafetyAlertController@markAsSolvedSafetyAlert`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `customer/safety-alert/resend/{trip_request_id}`
 
@@ -1113,7 +1018,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\SafetyAlertController@resendSafetyAlert`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/safety-alert/show/{trip_request_id}`
 
@@ -1121,7 +1026,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\SafetyAlertController@showSafetyAlert`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `customer/safety-alert/store`
 
@@ -1129,7 +1034,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\SafetyAlertController@storeSafetyAlert`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `DELETE` `customer/safety-alert/undo/{trip_request_id}`
 
@@ -1137,7 +1042,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\SafetyAlertController@deleteSafetyAlert`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/last-ride-details`
 
@@ -1145,7 +1050,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@lastRideDetails`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/ride/all-ride-list`
 
@@ -1153,7 +1058,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@allRideList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `driver/ride/arrival-time`
 
@@ -1161,7 +1066,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@arrivalTime`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/ride/bid`
 
@@ -1169,7 +1074,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@bid`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `driver/ride/coordinate-arrival`
 
@@ -1177,7 +1082,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@coordinateArrival`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/ride/details/{ride_request_id}`
 
@@ -1185,7 +1090,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@rideDetails`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/ride/final-fare`
 
@@ -1193,7 +1098,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Customer\TripRequestController@finalFareCalculation`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `driver/ride/ignore-trip-notification`
 
@@ -1201,7 +1106,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@ignoreTripNotification`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/ride/list`
 
@@ -1209,7 +1114,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@rideList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `driver/ride/match-otp`
 
@@ -1217,7 +1122,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@matchOtp`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/ride/ongoing-parcel-list`
 
@@ -1225,7 +1130,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@pendingParcelList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/ride/overview`
 
@@ -1233,7 +1138,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@tripOverview`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/ride/payment`
 
@@ -1241,7 +1146,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\PaymentController@payment`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/ride/pending-ride-list`
 
@@ -1249,7 +1154,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@pendingRideList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `driver/ride/resend-otp`
 
@@ -1257,7 +1162,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@resendOtp`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `driver/ride/returned-parcel`
 
@@ -1265,7 +1170,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@returnedParcel`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `driver/ride/ride-waiting`
 
@@ -1273,7 +1178,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@rideWaiting`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/ride/show-ride-details`
 
@@ -1281,7 +1186,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@showRideDetails`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `driver/ride/track-location`
 
@@ -1289,7 +1194,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@trackLocation`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/ride/trip-action`
 
@@ -1297,7 +1202,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@requestAction`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/ride/unpaid-parcel-list`
 
@@ -1305,7 +1210,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@unpaidParcelRequest`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `driver/ride/update-status`
 
@@ -1313,7 +1218,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@rideStatusUpdate`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `driver/ride/update-to-out-for-pickup/{tripId}`
 
@@ -1321,7 +1226,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@updateToOutForPickup`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `driver/safety-alert/mark-as-solved/{trip_request_id}`
 
@@ -1329,7 +1234,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\SafetyAlertController@markAsSolvedSafetyAlert`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `driver/safety-alert/resend/{trip_request_id}`
 
@@ -1337,7 +1242,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\SafetyAlertController@resendSafetyAlert`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/safety-alert/show/{trip_request_id}`
 
@@ -1345,7 +1250,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\SafetyAlertController@showSafetyAlert`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `driver/safety-alert/store`
 
@@ -1353,7 +1258,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\SafetyAlertController@storeSafetyAlert`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `DELETE` `driver/safety-alert/undo/{trip_request_id}`
 
@@ -1361,7 +1266,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\SafetyAlertController@deleteSafetyAlert`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `ride/store-screenshot`
 
@@ -1369,7 +1274,7 @@
 - **Controller:** `Modules\TripManagement\Http\Controllers\Api\Driver\TripRequestController@storeScreenshot`
 - **Middleware:** `api`, `auth:api`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ## UserManagement
 
@@ -1379,7 +1284,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\AddressController@store`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/address/all-address`
 
@@ -1387,7 +1292,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\AddressController@getAddresses`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `DELETE` `customer/address/delete`
 
@@ -1395,7 +1300,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\AddressController@destroy`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/address/edit/{id}`
 
@@ -1403,7 +1308,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\AddressController@edit`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `customer/address/update`
 
@@ -1411,7 +1316,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\AddressController@update`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/applied-coupon`
 
@@ -1419,7 +1324,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\CustomerController@applyCoupon`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/change-language`
 
@@ -1427,7 +1332,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\CustomerController@changeLanguage`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/external-update-data`
 
@@ -1435,7 +1340,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\CustomerController@externalUpdateCustomer`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/get-data`
 
@@ -1443,7 +1348,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\CustomerController@getCustomer`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/info`
 
@@ -1451,7 +1356,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\CustomerController@profileInfo`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/level`
 
@@ -1459,7 +1364,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\CustomerLevelController@getCustomerLevelWithTrip`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `customer/loyalty-points/convert`
 
@@ -1467,7 +1372,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\LoyaltyPointController@convert`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/loyalty-points/list`
 
@@ -1475,7 +1380,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\LoyaltyPointController@index`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/notification-list`
 
@@ -1483,7 +1388,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\AppNotificationController@index`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/referral-details`
 
@@ -1491,7 +1396,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\CustomerController@referralDetails`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `PUT` `customer/update/profile`
 
@@ -1499,7 +1404,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\CustomerController@updateProfile`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\UserManagement\Http\Requests\UserProfileUpdateApiRequest` — Dynamic rules could not be resolved: Attempt to read property "id" on null
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `customer/wallet/add-fund-digitally`
 
@@ -1507,7 +1412,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\WalletController@addFundDigitally`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `customer/wallet/bonus-list`
 
@@ -1515,7 +1420,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\WalletController@bonusList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `customer/wallet/transfer-drivemond-from-mart`
 
@@ -1523,7 +1428,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\WalletTransferController@transferDrivemondFromMartWallet`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `customer/wallet/transfer-drivemond-to-mart`
 
@@ -1531,7 +1436,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Customer\WalletTransferController@transferDrivemondToMartWallet`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/activity/daily-income`
 
@@ -1539,7 +1444,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\DriverActivityController@dailyIncome`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/activity/leaderboard`
 
@@ -1547,7 +1452,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\DriverActivityController@leaderboard`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `driver/change-language`
 
@@ -1555,7 +1460,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\DriverController@changeLanguage`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/face-verification/skip`
 
@@ -1563,7 +1468,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\IdentityVerificationController@skipVerification`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `driver/face-verification/verify`
 
@@ -1571,11 +1476,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\IdentityVerificationController@verify`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\UserManagement\Http\Requests\VerifyIdentityStoreOrUpdateRequest`
-
-| Field | Rules |
-|-------|-------|
-| `image` | required|image|mimes:png,jpg,jpeg,webp,gif|max:2048 |
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/income-statement`
 
@@ -1583,7 +1484,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\DriverController@incomeStatement`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/info`
 
@@ -1591,7 +1492,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\DriverController@profileInfo`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/level`
 
@@ -1599,7 +1500,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\DriverLevelController@getDriverLevelWithTrip`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `driver/loyalty-points/convert`
 
@@ -1607,7 +1508,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\LoyaltyPointController@convert`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/loyalty-points/list`
 
@@ -1615,7 +1516,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\LoyaltyPointController@index`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/my-activity`
 
@@ -1623,7 +1524,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\DriverController@myActivity`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/notification-list`
 
@@ -1631,7 +1532,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\AppNotificationController@index`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/pay-digitally`
 
@@ -1639,7 +1540,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\DriverController@payDigitally`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/referral-details`
 
@@ -1647,7 +1548,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\DriverController@referralDetails`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/time-tracking`
 
@@ -1655,7 +1556,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\TimeTrackController@store`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `driver/update-online-status`
 
@@ -1663,7 +1564,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\TimeTrackController@onlineStatus`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `driver/update/profile`
 
@@ -1671,7 +1572,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\DriverController@updateProfile`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\UserManagement\Http\Requests\UserProfileUpdateApiRequest` — Dynamic rules could not be resolved: Attempt to read property "id" on null
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/withdraw-method-info/create`
 
@@ -1679,7 +1580,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\WithdrawMethodInfoController@create`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/withdraw-method-info/delete/{id}`
 
@@ -1687,7 +1588,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\WithdrawMethodInfoController@destroy`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/withdraw-method-info/edit/{id}`
 
@@ -1695,7 +1596,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\WithdrawMethodInfoController@edit`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/withdraw-method-info/list`
 
@@ -1703,7 +1604,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\WithdrawMethodInfoController@index`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `driver/withdraw-method-info/update/{id}`
 
@@ -1711,7 +1612,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\WithdrawMethodInfoController@update`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/withdraw/methods`
 
@@ -1719,7 +1620,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\WithdrawController@methods`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/withdraw/pending-request`
 
@@ -1727,7 +1628,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\WithdrawController@getPendingWithdrawRequests`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `driver/withdraw/request`
 
@@ -1735,7 +1636,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\WithdrawController@create`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `GET` `driver/withdraw/settled-request`
 
@@ -1743,7 +1644,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\Driver\WithdrawController@getSettledWithdrawRequests`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `user/get-live-location`
 
@@ -1751,7 +1652,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\User\LocationController@getLastLocation`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `PUT` `user/read-notification`
 
@@ -1759,7 +1660,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\AppNotificationController@readNotification`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `user/store-live-location`
 
@@ -1767,7 +1668,7 @@
 - **Controller:** `Modules\UserManagement\Http\Controllers\Api\User\LocationController@storeLastLocation`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ## VehicleManagement
 
@@ -1777,7 +1678,7 @@
 - **Controller:** `Modules\VehicleManagement\Http\Controllers\Api\Customer\VehicleCategoryController@categoryFareList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/vehicle/brand/list`
 
@@ -1785,7 +1686,7 @@
 - **Controller:** `Modules\VehicleManagement\Http\Controllers\Api\Driver\VehicleBrandController@brandList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/vehicle/category/list`
 
@@ -1793,7 +1694,7 @@
 - **Controller:** `Modules\VehicleManagement\Http\Controllers\Api\Driver\VehicleCategoryController@list`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `GET` `driver/vehicle/model/list`
 
@@ -1801,7 +1702,7 @@
 - **Controller:** `Modules\VehicleManagement\Http\Controllers\Api\Driver\VehicleModelController@modelList`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 
 ### `POST` `driver/vehicle/store`
 
@@ -1809,23 +1710,7 @@
 - **Controller:** `Modules\VehicleManagement\Http\Controllers\Api\Driver\VehicleController@store`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\VehicleManagement\Http\Requests\VehicleApiStoreUpdateRequest`
-
-| Field | Rules |
-|-------|-------|
-| `brand_id` | required |
-| `model_id` | required |
-| `category_id` | required |
-| `driver_id` | required |
-| `ownership` | required |
-| `licence_plate_number` | required |
-| `licence_expire_date` | required|date |
-| `vin_number` | sometimes |
-| `transmission` | sometimes |
-| `parcel_weight_capacity` | sometimes |
-| `fuel_type` | required |
-| `other_documents` | required, array |
-| `other_documents.*` | mimes:png,jpg,jpeg,webp,gif,csv,xlsx,pdf,doc,docx,zip|max:2048 |
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ### `POST` `driver/vehicle/update/{id}`
 
@@ -1833,23 +1718,7 @@
 - **Controller:** `Modules\VehicleManagement\Http\Controllers\Api\Driver\VehicleController@update`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Validation (FormRequest):** `Modules\VehicleManagement\Http\Requests\VehicleApiStoreUpdateRequest`
-
-| Field | Rules |
-|-------|-------|
-| `brand_id` | required |
-| `model_id` | required |
-| `category_id` | required |
-| `driver_id` | required |
-| `ownership` | required |
-| `licence_plate_number` | required |
-| `licence_expire_date` | required|date |
-| `vin_number` | sometimes |
-| `transmission` | sometimes |
-| `parcel_weight_capacity` | sometimes |
-| `fuel_type` | required |
-| `other_documents` | required, array |
-| `other_documents.*` | mimes:png,jpg,jpeg,webp,gif,csv,xlsx,pdf,doc,docx,zip|max:2048 |
+**Payload:** No documented validation found. Check the controller method for request parameters.
 
 ## ZoneManagement
 
@@ -1859,5 +1728,5 @@
 - **Controller:** `Modules\ZoneManagement\Http\Controllers\Api\Driver\ZoneController@list`
 - **Middleware:** `api`, `auth:api`, `maintenance_mode`
 
-**Payload:** No FormRequest validation found. Check the controller method for request parameters.
+**Payload:** No payload required (query parameters may be accepted).
 

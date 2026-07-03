@@ -4406,4 +4406,5 @@
   'Please proceed step by step with proper data according to instructions' => 'Please proceed step by step with proper data according to instructions',
   'Before starting the installation process please collect this information. Without this information, you won’t be able to complete the installation process' => 'Before starting the installation process please collect this information. Without this information, you won’t be able to complete the installation process',
   'Required Database Information' => 'Required Database Information',
+  'The first name field is required.' => 'The first name field is required.',
 );

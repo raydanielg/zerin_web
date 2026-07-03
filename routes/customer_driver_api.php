@@ -532,3 +532,20 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth:api', 'maintenance_mode
 
 // Screenshot upload (driver)
 Route::post('ride/store-screenshot', [DriverTripController::class, 'storeScreenshot'])->middleware('auth:api');
+
+// ============================================================
+// INTEGRATION APIs (API Key required, for external systems)
+// ============================================================
+
+Route::group(['prefix' => 'integration', 'middleware' => ['api.key']], function () {
+    Route::controller(CustomerController::class)->group(function () {
+        Route::get('customers', 'index');
+        Route::get('customers/{id}', 'show');
+        Route::get('users', 'allUsers');
+    });
+
+    Route::controller(DriverController::class)->group(function () {
+        Route::get('drivers', 'index');
+        Route::get('drivers/{id}', 'show');
+    });
+});
