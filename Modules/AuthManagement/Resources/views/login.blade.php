@@ -5,205 +5,370 @@
     @php($logo = getSession('header_logo'))
     @php($favicon = getSession('favicon'))
     @php($preloader = getSession('preloader'))
-    <!-- Page Title -->
     <title>{{ translate('admin_login') }}</title>
-    <!-- Meta Data -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Favicon -->
     <link rel="shortcut icon" href="{{ $favicon ? dynamicStorage('storage/app/public/business/' . $favicon) : '' }}"/>
 
-    <!-- Web Fonts -->
-    <!-- Web Fonts -->
     <link href="{{ dynamicAsset('public/assets/admin-module/css/fonts/google.css') }}" rel="stylesheet">
-
-    <!-- ======= BEGIN GLOBAL MANDATORY STYLES ======= -->
     <link rel="stylesheet" href="{{ dynamicAsset('public/assets/admin-module/css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" href="{{ dynamicAsset('public/assets/admin-module/css/bootstrap-icons.min.css') }}"/>
-    <link rel="stylesheet"
-          href="{{ dynamicAsset('public/assets/admin-module/plugins/perfect-scrollbar/perfect-scrollbar.min.css') }}"/>
     <link rel="stylesheet" href="{{ dynamicAsset('public/assets/admin-module/css/toastr.css') }}"/>
-    <!-- ======= END BEGIN GLOBAL MANDATORY STYLES ======= -->
 
-    <!-- ======= MAIN STYLES ======= -->
-    <link rel="stylesheet" href="{{ dynamicAsset('public/assets/admin-module/css/style.css') }}"/>
-    <link rel="stylesheet" href="{{ dynamicAsset('public/assets/admin-module/css/custom.css') }}"/>
-    <!-- ======= END MAIN STYLES ======= -->
-    @include('landing-page.layouts.css')
-
-    <!-- Custom Styles for modern login -->
     <style>
-        :root {
-            --primary-clr: #007bff;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background-color: #f8f9fa;
-        }
-        .login-wrap {
-            display: flex;
+            font-family: 'Inter', 'Nunito', sans-serif;
             min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .bg-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(135deg, #0a2e1f 0%, #0d4a30 50%, #0a2e1f 100%);
+        }
+        .bg-layer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+            opacity: 0.5;
+        }
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+        }
+        .bg-blob-1 {
+            width: 400px; height: 400px;
+            background: #1a9f8e;
+            top: -100px; right: -100px;
+        }
+        .bg-blob-2 {
+            width: 300px; height: 300px;
+            background: #f9ac00;
+            bottom: -80px; left: -80px;
+        }
+        .login-card {
+            position: relative;
+            z-index: 1;
             width: 100%;
+            max-width: 440px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            overflow: hidden;
+            animation: cardSlideIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
+        }
+        @keyframes cardSlideIn {
+            from { opacity: 0; transform: translateY(24px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .login-header {
+            background: linear-gradient(135deg, #0d4a30 0%, #0a2e1f 100%);
+            padding: 36px 32px 28px;
+            text-align: center;
+            position: relative;
+        }
+        .login-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; left: 0; right: 0;
+            height: 24px;
+            background: #fff;
+            border-radius: 24px 24px 0 0;
+        }
+        .logo-wrap {
+            width: 64px; height: 64px;
+            margin: 0 auto 16px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 16px;
+            display: flex;
             align-items: center;
             justify-content: center;
         }
-        .login-left {
-            width: 100%;
-            max-width: 450px;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        .logo-wrap img {
+            max-width: 40px;
+            max-height: 40px;
+            object-fit: contain;
         }
-        @media (max-width: 576px) {
-            .login-left {
-                margin: 20px;
-                padding: 30px;
-            }
+        .login-header h2 {
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 4px;
         }
-        .form-control {
-            border-radius: 8px;
-            padding: 12px;
-            border: 1px solid #ddd;
+        .login-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
         }
-        .btn-primary {
-            border-radius: 8px;
-            padding: 12px;
-            background-color: #000;
-            border: none;
+        .login-body {
+            padding: 8px 36px 36px;
+        }
+        .field-group {
+            margin-bottom: 22px;
+        }
+        .field-label {
+            display: block;
+            font-size: 0.82rem;
             font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
         }
-        .btn-primary:hover {
-            background-color: #333;
+        .field-wrap {
+            position: relative;
+        }
+        .field-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+        .field-input {
+            width: 100%;
+            padding: 12px 14px 12px 44px;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            outline: none;
+            background: #f9fafb;
+        }
+        .field-input:focus {
+            border-color: #0d4a30;
+            box-shadow: 0 0 0 3px rgba(13,74,48,0.1);
+            background: #fff;
+        }
+        .pw-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #9ca3af;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 0;
+        }
+        .pw-toggle:hover { color: #6b7280; }
+        .remember-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+        .remember-check {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .remember-check input {
+            width: 16px;
+            height: 16px;
+            accent-color: #0d4a30;
+            cursor: pointer;
+        }
+        .remember-check span {
+            font-size: 0.82rem;
+            color: #6b7280;
+        }
+        .btn-signin {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #0d4a30 0%, #0a2e1f 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-signin:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(13,74,48,0.3);
+        }
+        .btn-signin:active {
+            transform: translateY(0);
+        }
+        .demo-box {
+            margin-top: 20px;
+            padding: 14px 16px;
+            background: #f3f4f6;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .demo-box .demo-text {
+            font-size: 0.78rem;
+            color: #6b7280;
+        }
+        .demo-box .demo-text strong {
+            color: #374151;
+        }
+        .demo-copy-btn {
+            background: none;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            color: #4b5563;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .demo-copy-btn:hover {
+            background: #e5e7eb;
+        }
+        .login-footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.75rem;
+            color: #9ca3af;
+        }
+        @media (max-width: 480px) {
+            .login-card { max-width: 100%; }
+            .login-header { padding: 28px 24px 24px; }
+            .login-body { padding: 8px 24px 28px; }
         }
     </style>
 </head>
 
 <body>
-<!-- Offcanval Overlay -->
-<div class="offcanvas-overlay"></div>
-<!-- Offcanval Overlay -->
-<!-- Preloader -->
-<div class="preloader" id="preloader">
-    @if ($preloader)
-        <img class="preloader-img" loading="eager" width="160"
-             src="{{ dynamicStorage('storage/app/public/business/' . $preloader) }}" alt="">
-    @else
-        <div class="spinner-grow" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    @endif
+<div class="bg-layer">
+    <div class="bg-blob bg-blob-1"></div>
+    <div class="bg-blob bg-blob-2"></div>
 </div>
-<div class="resource-loader d-none" id="resource-loader">
-    @if ($preloader)
-        <img width="160" loading="eager" src="{{ dynamicStorage('storage/app/public/business/' . $preloader) }}"
-             alt="">
-    @else
-        <div class="spinner-grow" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    @endif
-</div>
-<!-- End Preloader -->
-<!-- Login Form -->
-<div class="login-form d-block">
-    <form action="{{ route('admin.auth.login') }}" enctype="multipart/form-data" method="POST" id="login-form">
-        @csrf
-        <div class="login-wrap">
-            <!-- Centered Form -->
-            <div class="login-left">
-                <div class="mb-5 text-center">
-                    <h2 class="fw-bold mb-2">{{ translate('Sign_In') }}</h2>
-                    <p class="text-muted">{{ translate('sign_in_to_stay_connected') }}</p>
-                </div>
 
-                <div class="mb-4">
-                    <label for="email" class="form-label fw-medium">{{ translate('email') }}</label>
-                    <input type="email" name="email" class="form-control"
-                           placeholder="you@example.com" required id="email"
+<div class="login-card">
+    <div class="login-header">
+        <div class="logo-wrap">
+            @if($logo)
+                <img src="{{ dynamicStorage('storage/app/public/business/' . $logo) }}" alt="Logo">
+            @else
+                <i class="bi bi-shield-lock-fill" style="font-size: 28px; color: #fff;"></i>
+            @endif
+        </div>
+        <h2>{{ translate('Sign_In') }}</h2>
+        <p>{{ translate('sign_in_to_stay_connected') }}</p>
+    </div>
+
+    <div class="login-body">
+        <form action="{{ route('admin.auth.login') }}" method="POST" id="login-form">
+            @csrf
+            <input type="hidden" id="set_default_captcha_value" value="0">
+            <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+
+            <div class="field-group">
+                <label for="email" class="field-label">{{ translate('email') }}</label>
+                <div class="field-wrap">
+                    <i class="bi bi-envelope field-icon"></i>
+                    <input type="email" name="email" id="email" class="field-input"
+                           placeholder="you@example.com" required
                            value="{{ request()->cookie('remember_email') }}">
                 </div>
-
-                <div class="mb-4">
-                    <label for="password" class="form-label fw-medium">{{ translate('password') }}</label>
-                    <div class="position-relative">
-                        <input type="password" name="password" id="password" class="form-control"
-                               placeholder="********"
-                               value="{{ request()->cookie('remember_password') }}" required>
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-between mb-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ request()->cookie('remember_checked') ? 'checked' : '' }}>
-                        <label class="form-check-label" for="remember">
-                            {{ translate('remember_me') }}
-                        </label>
-                    </div>
-                </div>
-
-                <button class="btn btn-primary w-100 mb-4" id="signInBtn" type="submit">
-                    {{ translate('sign_in') }} →
-                </button>
-
-                @if (env('APP_MODE') == 'demo')
-                    <div class="bg-light p-3 rounded mb-4 d-flex justify-content-between align-items-center">
-                        <div>
-                            <div class="small text-muted">{{ translate('email') }}: admin@admin.com</div>
-                            <div class="small text-muted">{{ translate('password') }}: 12345678</div>
-                        </div>
-                        <button type="button" class="btn btn-sm btn-outline-dark" onclick="copyCredentials()">
-                            <i class="bi bi-copy"></i>
-                        </button>
-                    </div>
-                @endif
-                
-                {{-- <div class="text-center mt-4">
-                    <span class="small text-muted">
-                        {{ translate('Software_Version') }} : {{ env('SOFTWARE_VERSION') }}
-                    </span>
-                </div> --}}
             </div>
-        </div>
-    </form>
-</div>
-<!-- End Login Form -->
 
-<!-- ======= BEGIN GLOBAL MANDATORY SCRIPTS ======= -->
+            <div class="field-group">
+                <label for="password" class="field-label">{{ translate('password') }}</label>
+                <div class="field-wrap">
+                    <i class="bi bi-lock field-icon"></i>
+                    <input type="password" name="password" id="password" class="field-input"
+                           placeholder="********" required
+                           value="{{ request()->cookie('remember_password') }}">
+                    <button type="button" class="pw-toggle" onclick="togglePassword()">
+                        <i class="bi bi-eye" id="pwIcon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="remember-row">
+                <label class="remember-check">
+                    <input type="checkbox" name="remember" id="remember" {{ request()->cookie('remember_checked') ? 'checked' : '' }}>
+                    <span>{{ translate('remember_me') }}</span>
+                </label>
+            </div>
+
+            <button class="btn-signin" id="signInBtn" type="submit">
+                <span>{{ translate('sign_in') }}</span>
+                <i class="bi bi-arrow-right"></i>
+            </button>
+        </form>
+
+        @if (env('APP_MODE') == 'demo')
+            <div class="demo-box">
+                <div class="demo-text">
+                    <div><strong>Email:</strong> admin@admin.com</div>
+                    <div><strong>Password:</strong> 12345678</div>
+                </div>
+                <button type="button" class="demo-copy-btn" onclick="copyCredentials()">
+                    <i class="bi bi-copy"></i> Copy
+                </button>
+            </div>
+        @endif
+
+        <div class="login-footer">
+            &copy; {{ date('Y') }} {{ env('APP_NAME', 'DriveMond') }}. All rights reserved.
+        </div>
+    </div>
+</div>
+
 <script src="{{ dynamicAsset('public/assets/admin-module/js/jquery-3.6.0.min.js') }}"></script>
-<script src="{{ dynamicAsset('public/assets/admin-module/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ dynamicAsset('public/assets/admin-module/js/main.js') }}"></script>
 <script src="{{ dynamicAsset('public/assets/admin-module/js/toastr.js') }}"></script>
 <script src="{{ dynamicAsset('public/assets/admin-module/js/login.js') }}"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<!-- ======= BEGIN GLOBAL MANDATORY SCRIPTS ======= -->
-
 {!! Toastr::message() !!}
 
-@if (env('APP_MODE') == 'demo')
-    <script>
-        "use strict";
-
-        function copyCredentials() {
-            document.getElementById('email').value = 'admin@admin.com';
-            document.getElementById('password').value = '12345678'
-            toastr.success('Copied successfully!', 'Success!', {
-                CloseButton: true,
-                ProgressBar: true
-            });
+<script>
+    function togglePassword() {
+        const pw = document.getElementById('password');
+        const icon = document.getElementById('pwIcon');
+        if (pw.type === 'password') {
+            pw.type = 'text';
+            icon.classList.replace('bi-eye', 'bi-eye-slash');
+        } else {
+            pw.type = 'password';
+            icon.classList.replace('bi-eye-slash', 'bi-eye');
         }
-    </script>
-@endif
+    }
+
+    @if (env('APP_MODE') == 'demo')
+    function copyCredentials() {
+        document.getElementById('email').value = 'admin@admin.com';
+        document.getElementById('password').value = '12345678';
+        toastr.success('Credentials filled successfully!', 'Success', {
+            CloseButton: true,
+            ProgressBar: true
+        });
+    }
+    @endif
+</script>
 
 @if ($errors->any())
     <script>
-        "use strict";
         @foreach ($errors->all() as $error)
-        toastr.error('{{ $error }}', Error, {
+        toastr.error('{{ addslashes($error) }}', 'Error', {
             CloseButton: true,
             ProgressBar: true
         });
