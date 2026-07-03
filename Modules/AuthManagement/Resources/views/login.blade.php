@@ -33,25 +33,24 @@
             position: fixed;
             inset: 0;
             z-index: 0;
-            background: linear-gradient(135deg, #0a2e1f 0%, #0d4a30 50%, #0a2e1f 100%);
+            background: #fafafa;
         }
         .bg-layer::before {
             content: '';
             position: absolute;
             inset: 0;
-            background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
-            background-size: 28px 28px;
-            opacity: 0.5;
+            background-image: radial-gradient(rgba(13,74,48,0.07) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
         }
         .bg-blob {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.15;
+            filter: blur(90px);
+            opacity: 0.08;
         }
         .bg-blob-1 {
             width: 400px; height: 400px;
-            background: #1a9f8e;
+            background: #0d4a30;
             top: -100px; right: -100px;
         }
         .bg-blob-2 {
@@ -66,55 +65,47 @@
             max-width: 440px;
             background: #fff;
             border-radius: 20px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
             overflow: hidden;
             animation: cardSlideIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
+            border: 1px solid rgba(0,0,0,0.04);
         }
         @keyframes cardSlideIn {
             from { opacity: 0; transform: translateY(24px) scale(0.98); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
         .login-header {
-            background: linear-gradient(135deg, #0d4a30 0%, #0a2e1f 100%);
-            padding: 36px 32px 28px;
+            padding: 40px 32px 20px;
             text-align: center;
             position: relative;
         }
-        .login-header::after {
-            content: '';
-            position: absolute;
-            bottom: -1px; left: 0; right: 0;
-            height: 24px;
-            background: #fff;
-            border-radius: 24px 24px 0 0;
-        }
         .logo-wrap {
-            width: 64px; height: 64px;
-            margin: 0 auto 16px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(8px);
-            border-radius: 16px;
+            width: 72px; height: 72px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #0d4a30 0%, #0a2e1f 100%);
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 8px 20px rgba(13,74,48,0.2);
         }
         .logo-wrap img {
-            max-width: 40px;
-            max-height: 40px;
+            max-width: 44px;
+            max-height: 44px;
             object-fit: contain;
         }
         .login-header h2 {
-            color: #fff;
+            color: #111827;
             font-size: 1.6rem;
             font-weight: 800;
             margin-bottom: 4px;
         }
         .login-header p {
-            color: rgba(255,255,255,0.7);
+            color: #6b7280;
             font-size: 0.85rem;
         }
         .login-body {
-            padding: 8px 36px 36px;
+            padding: 12px 36px 36px;
         }
         .field-group {
             margin-bottom: 22px;
@@ -311,7 +302,6 @@
 
             <button class="btn-signin" id="signInBtn" type="submit">
                 <span>{{ translate('sign_in') }}</span>
-                <i class="bi bi-arrow-right"></i>
             </button>
         </form>
 
