@@ -25,11 +25,11 @@ class FirebaseSubscribeController extends Controller
         $topic = $request->input('topic');
 
         try {
-            if($this->messaging){
+            if ($this->messaging) {
                 $this->messaging->subscribeToTopic($topic, $token);
                 return response()->json(['message' => 'Successfully subscribed to topic'], 200);
             }
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return response()->json(['message' => 'Firebase messaging is not configured. Please set the service account key in notification settings.'], 503);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }

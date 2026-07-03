@@ -178,6 +178,26 @@ label.file_upload {
     height: 500px !important;
 }
 
+.map-pac-controller {
+    position: relative;
+}
+.map-pac-controller #map-canvas {
+    border-radius: 0.25rem;
+}
+.map-pac-controller .gmnoprint {
+    z-index: 10 !important;
+}
+.map-pac-controller .gm-style-mtc {
+    z-index: 5 !important;
+}
+.map-pac-controller #pac-input {
+    z-index: 10 !important;
+    background: #fff !important;
+    position: relative !important;
+    margin-top: 0 !important;
+    margin-inline-start: 0 !important;
+}
+
 .word-break {
     word-break: break-all;
 }

@@ -3744,15 +3744,20 @@ body.aside-folded[theme="dark"] .aside-body .nav ul.sub-menu {
     border-radius: 2px !important;
 }
 .map-pac-controller .gmnoprint{
-    
-    @media screen and (max-width: 1520px) {
-        left: 0 !important;
-    }
+    z-index: 10 !important;
 }
 .map-pac-controller .gm-style-mtc-bbw{    
     @media screen and (max-width: 1520px) {
         margin-left: 68px !important;
     }
+}
+
+.map-pac-controller .gmnoprint[style*="top"] {
+    z-index: 10 !important;
+}
+.map-pac-controller .gm-bundled-control,
+.map-pac-controller .gm-style-mtc {
+    z-index: 5 !important;
 }
 
 

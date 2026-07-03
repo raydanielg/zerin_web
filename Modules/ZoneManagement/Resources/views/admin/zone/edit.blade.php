@@ -67,7 +67,7 @@
                                         </div>
 
                                         <!-- Start Map -->
-                                        <div class="map-warper position-relative map-pac-controller overflow-hidden rounded">
+                                        <div class="map-warper position-relative map-pac-controller rounded">
                                             <input id="pac-input" class="controls rounded map-search-box"
                                                    title="{{ translate('search_your_location_here') }}" type="text"
                                                    placeholder="{{ translate('search_here') }}"/>
