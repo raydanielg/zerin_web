@@ -80,18 +80,14 @@
             position: relative;
         }
         .logo-wrap {
-            width: 72px; height: 72px;
             margin: 0 auto 20px;
-            background: linear-gradient(135deg, #0d4a30 0%, #0a2e1f 100%);
-            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 20px rgba(13,74,48,0.2);
         }
         .logo-wrap img {
-            max-width: 44px;
-            max-height: 44px;
+            max-width: 120px;
+            max-height: 80px;
             object-fit: contain;
         }
         .login-header h2 {
@@ -257,7 +253,7 @@
             @if($logo)
                 <img src="{{ dynamicStorage('storage/app/public/business/' . $logo) }}" alt="Logo">
             @else
-                <i class="bi bi-shield-lock-fill" style="font-size: 28px; color: #fff;"></i>
+                <i class="bi bi-shield-lock-fill" style="font-size: 40px; color: #0d4a30;"></i>
             @endif
         </div>
         <h2>{{ translate('Sign_In') }}</h2>
