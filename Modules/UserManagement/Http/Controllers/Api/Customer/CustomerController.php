@@ -272,6 +272,6 @@ class CustomerController extends Controller
             'has_more' => $hasMore,
         ];
 
-        return response()->json(responseFormatter(DEFAULT_200, $data, $limit, $offset));
+        return response()->json(responseFormatter(DEFAULT_200, $data));
     }
 }
