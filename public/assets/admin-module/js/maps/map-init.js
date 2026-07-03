@@ -41,6 +41,8 @@ $(document).ready(function () {
                 position: data.position,
                 title: data.title,
                 icon: data.icon,
+                optimized: false,
+                clickable: true,
             });
 
             google.maps.event.addListener(marker, "click", function () {

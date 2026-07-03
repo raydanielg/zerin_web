@@ -290,9 +290,6 @@
                     map.fitBounds(bounds);
                 }
 
-                const infoWindow = new google.maps.InfoWindow();
-
-
                 const searchBox = new google.maps.places.SearchBox(input);
 
                 map.addListener("bounds_changed", function () {
@@ -444,10 +441,11 @@
                             position: data.position,
                             title: data.title,
                             icon: data.icon,
+                            optimized: false,
+                            clickable: true,
                         });
 
                         marker.addListener('click', () => openInfoWindowForMarker(marker, data));
-                        marker.setMap(map);
                         newMarkers.push(marker);
                         updatedMarkersMap.set(data.id, marker);
                     }
