@@ -522,7 +522,7 @@
 @push('script')
     @php($map_key = businessConfig(GOOGLE_MAP_API)?->value['map_api_key'] ?? null)
     <script
-        src="https://maps.googleapis.com/maps/api/js?key={{ $map_key }}&libraries=drawing,places&v=3.50"></script>
+        src="https://maps.googleapis.com/maps/api/js?key={{ $map_key }}&libraries=drawing,places"></script>
     <script src="{{dynamicAsset('public/assets/admin-module/js/zone-management/zone/index.js') }}"></script>
     <script>
         "use strict";
@@ -586,7 +586,7 @@
             }
             map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
             drawingManager = new google.maps.drawing.DrawingManager({
-                drawingMode: google.maps.drawing.OverlayType.POLYGON,
+                drawingMode: null,
                 drawingControl: true,
                 drawingControlOptions: {
                     position: google.maps.ControlPosition.TOP_CENTER,
@@ -626,7 +626,7 @@
             // Create the search box and link it to the UI element.
             const input = document.getElementById("pac-input");
             const searchBox = new google.maps.places.SearchBox(input);
-            map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
             // Bias the SearchBox results towards current map's viewport.
             map.addListener("bounds_changed", () => {
                 searchBox.setBounds(map.getBounds());
