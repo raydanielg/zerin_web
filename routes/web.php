@@ -91,3 +91,7 @@ Route::get('locate-driver/{userId}/{token}', [RealTimeLocationSharingController:
 Route::get('/docs', function () {
     return response()->file(public_path('api-docs/swagger-ui.html'));
 })->name('docs');
+
+Route::get('/docs/partner', function () {
+    return response()->file(public_path('api-docs/swagger-partner.html'));
+})->name('docs.partner');

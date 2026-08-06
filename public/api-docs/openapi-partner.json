@@ -1,0 +1,507 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Xerin Partner API",
+        "description": "Partner API documentation for Xerin Express",
+        "version": "1.0.0",
+        "contact": {
+            "name": "Xerin Support"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://zerinexpress.com",
+            "description": "Production server"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Partner",
+            "description": "Partner Delivery API - external systems create delivery orders, get quotes, track status, and receive webhooks"
+        }
+    ],
+    "paths": {
+        "/api/partner/v1/delivery/quote": {
+            "post": {
+                "tags": [
+                    "Partner"
+                ],
+                "summary": "Quote",
+                "operationId": "Partner_quote_POST",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "PartnerAuth": [],
+                        "PartnerSecret": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "pickup_coordinates": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "minItems": 2,
+                                        "maxItems": 2
+                                    },
+                                    "destination_coordinates": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "minItems": 2,
+                                        "maxItems": 2
+                                    },
+                                    "pickup_address": {
+                                        "type": "string"
+                                    },
+                                    "destination_address": {
+                                        "type": "string"
+                                    },
+                                    "parcel_category_id": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "weight": {
+                                        "type": "number",
+                                        "minimum": 0
+                                    }
+                                },
+                                "required": [
+                                    "pickup_coordinates",
+                                    "destination_coordinates",
+                                    "pickup_address",
+                                    "destination_address",
+                                    "parcel_category_id",
+                                    "weight"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/partner/v1/delivery/orders": {
+            "post": {
+                "tags": [
+                    "Partner"
+                ],
+                "summary": "Store",
+                "operationId": "Partner_store_POST",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "PartnerAuth": [],
+                        "PartnerSecret": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "pickup_coordinates": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "minItems": 2,
+                                        "maxItems": 2
+                                    },
+                                    "destination_coordinates": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "minItems": 2,
+                                        "maxItems": 2
+                                    },
+                                    "pickup_address": {
+                                        "type": "string"
+                                    },
+                                    "destination_address": {
+                                        "type": "string"
+                                    },
+                                    "pickup_note": {
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "nullable": true
+                                    },
+                                    "note": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "parcel_category_id": {
+                                        "type": "string",
+                                        "format": "uuid"
+                                    },
+                                    "weight": {
+                                        "type": "number",
+                                        "minimum": 0
+                                    },
+                                    "payer": {
+                                        "enum": [
+                                            "sender",
+                                            "receiver"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "sender_name": {
+                                        "type": "string"
+                                    },
+                                    "sender_phone": {
+                                        "type": "string"
+                                    },
+                                    "sender_address": {
+                                        "type": "string"
+                                    },
+                                    "receiver_name": {
+                                        "type": "string"
+                                    },
+                                    "receiver_phone": {
+                                        "type": "string"
+                                    },
+                                    "receiver_address": {
+                                        "type": "string"
+                                    },
+                                    "external_reference": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "required": [
+                                    "pickup_coordinates",
+                                    "destination_coordinates",
+                                    "pickup_address",
+                                    "destination_address",
+                                    "parcel_category_id",
+                                    "weight",
+                                    "payer",
+                                    "sender_name",
+                                    "sender_phone",
+                                    "sender_address",
+                                    "receiver_name",
+                                    "receiver_phone",
+                                    "receiver_address"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Partner"
+                ],
+                "summary": "Index",
+                "operationId": "Partner_index_GET",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "PartnerAuth": [],
+                        "PartnerSecret": []
+                    }
+                ]
+            }
+        },
+        "/api/partner/v1/delivery/orders/{id}": {
+            "get": {
+                "tags": [
+                    "Partner"
+                ],
+                "summary": "Show",
+                "operationId": "Partner_show_GET",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "PartnerAuth": [],
+                        "PartnerSecret": []
+                    }
+                ]
+            }
+        },
+        "/api/partner/v1/delivery/orders/{id}/cancel": {
+            "put": {
+                "tags": [
+                    "Partner"
+                ],
+                "summary": "Cancel",
+                "operationId": "Partner_cancel_PUT",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "PartnerAuth": [],
+                        "PartnerSecret": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "payload": {
+                                        "type": "string",
+                                        "description": "See source controller for exact fields"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "BearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            },
+            "PartnerAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "X-API-KEY",
+                "description": "Partner API key"
+            },
+            "PartnerSecret": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "X-API-SECRET",
+                "description": "Partner API secret"
+            }
+        },
+        "schemas": {
+            "Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "errors": {
+                        "type": "object"
+                    }
+                }
+            }
+        }
+    }
+}
