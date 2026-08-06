@@ -92,6 +92,18 @@ Route::get('/docs', function () {
     return response()->file(public_path('api-docs/swagger-ui.html'));
 })->name('docs');
 
+Route::get('/api-docs/openapi.json', function () {
+    return response()->file(public_path('api-docs/openapi.json'), [
+        'Content-Type' => 'application/json',
+    ]);
+})->name('api-docs.json');
+
 Route::get('/docs/partner', function () {
     return response()->file(public_path('api-docs/swagger-partner.html'));
 })->name('docs.partner');
+
+Route::get('/api-docs/openapi-partner.json', function () {
+    return response()->file(public_path('api-docs/openapi-partner.json'), [
+        'Content-Type' => 'application/json',
+    ]);
+})->name('api-docs.partner.json');
