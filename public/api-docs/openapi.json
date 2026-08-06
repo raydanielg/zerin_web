@@ -22156,11 +22156,6 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "PartnerAuth": []
-                    }
-                ],
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -22256,11 +22251,6 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "PartnerAuth": []
-                    }
-                ],
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -22314,6 +22304,14 @@
                                         ],
                                         "type": "string"
                                     },
+                                    "customer_name": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "customer_phone": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
                                     "sender_name": {
                                         "type": "string"
                                     },
@@ -22365,6 +22363,14 @@
                 "operationId": "Partner_index_GET",
                 "parameters": [
                     {
+                        "name": "customer_phone",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
                         "name": "limit",
                         "in": "query",
                         "required": false,
@@ -22415,12 +22421,7 @@
                             }
                         }
                     }
-                },
-                "security": [
-                    {
-                        "PartnerAuth": []
-                    }
-                ]
+                }
             }
         },
         "/api/partner/v1/delivery/orders/{id}": {
@@ -22474,12 +22475,7 @@
                             }
                         }
                     }
-                },
-                "security": [
-                    {
-                        "PartnerAuth": []
-                    }
-                ]
+                }
             }
         },
         "/api/partner/v1/delivery/orders/{id}/cancel": {
@@ -22534,11 +22530,6 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                        "PartnerAuth": []
-                    }
-                ],
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -23049,13 +23040,13 @@
                 }
             }
         },
-        "/admin/partner/regenerate-secret/{id}": {
+        "/admin/partner/regenerate-api-key/{id}": {
             "post": {
                 "tags": [
                     "Admin"
                 ],
-                "summary": "Regenerate Secret",
-                "operationId": "Admin_regenerateSecret_POST",
+                "summary": "Regenerate Api Key",
+                "operationId": "Admin_regenerateApiKey_POST",
                 "parameters": [
                     {
                         "name": "id",
@@ -48707,12 +48698,6 @@
             "BearerAuth": {
                 "type": "http",
                 "scheme": "bearer"
-            },
-            "PartnerAuth": {
-                "type": "apiKey",
-                "in": "header",
-                "name": "X-API-KEY",
-                "description": "Partner API key"
             }
         },
         "schemas": {

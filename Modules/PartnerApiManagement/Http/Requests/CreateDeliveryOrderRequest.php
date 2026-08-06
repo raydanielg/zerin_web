@@ -22,6 +22,9 @@ class CreateDeliveryOrderRequest extends FormRequest
             'weight' => 'required|numeric|min:0',
             'payer' => 'required|in:sender,receiver',
 
+            'customer_name' => 'nullable|string',
+            'customer_phone' => 'nullable|string',
+
             'sender_name' => 'required|string',
             'sender_phone' => 'required|string',
             'sender_address' => 'required|string',

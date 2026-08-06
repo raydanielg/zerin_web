@@ -16,6 +16,8 @@ use Modules\PartnerApiManagement\Http\Requests\QuoteDeliveryRequest;
 use Modules\TripManagement\Lib\CommonTrait;
 use Modules\TripManagement\Service\Interfaces\TripRequestServiceInterface;
 use Modules\TripManagement\Transformers\TripRequestResource;
+use Modules\UserManagement\Entities\User;
+use Modules\UserManagement\Service\Interfaces\CustomerServiceInterface;
 use Modules\ZoneManagement\Service\Interfaces\ZoneServiceInterface;
 
 class DeliveryController extends Controller
@@ -26,7 +28,8 @@ class DeliveryController extends Controller
         protected ZoneServiceInterface $zoneService,
         protected ParcelWeightServiceInterface $parcelWeightService,
         protected ParcelFareServiceInterface $parcelFareService,
-        protected TripRequestServiceInterface $tripRequestService
+        protected TripRequestServiceInterface $tripRequestService,
+        protected CustomerServiceInterface $customerService
     ) {
     }
 
@@ -47,7 +50,7 @@ class DeliveryController extends Controller
 
     /**
      * POST /api/partner/v1/delivery/orders
-     * Creates a delivery (parcel) order for the authenticated partner.
+     * Creates a delivery (parcel) order. Customer details are provided in the request.
      */
     public function store(CreateDeliveryOrderRequest $request): JsonResponse
     {
@@ -61,10 +64,13 @@ class DeliveryController extends Controller
         $zone = $resolved['zone'];
         $routes = $resolved['routes'];
 
+        // Find or create customer from request data
+        $customer = $this->findOrCreateCustomer($request);
+
         DB::beginTransaction();
         try {
             $attributes = [
-                'customer_id' => auth('api')->id(),
+                'customer_id' => $customer->id,
                 'zone_id' => $zone->id,
                 'area_id' => null,
                 'type' => PARCEL,
@@ -121,7 +127,7 @@ class DeliveryController extends Controller
     public function show(string $id): JsonResponse
     {
         $trip = $this->tripRequestService->findOneWithAvg(
-            criteria: ['id' => $id, 'customer_id' => auth('api')->id()],
+            criteria: ['id' => $id],
             relations: ['driver', 'vehicle.model', 'vehicleCategory', 'tripStatus', 'coordinate', 'fee', 'time', 'parcel', 'parcelUserInfo'],
             withAvgRelation: ['driverReceivedReviews', 'rating']
         );
@@ -138,8 +144,16 @@ class DeliveryController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
+        $criteria = ['type' => PARCEL];
+        if ($request->has('customer_phone')) {
+            $customer = User::where('phone', $request->customer_phone)->first();
+            if ($customer) {
+                $criteria['customer_id'] = $customer->id;
+            }
+        }
+
         $data = $this->tripRequestService->getBy(
-            criteria: ['customer_id' => auth('api')->id(), 'type' => PARCEL],
+            criteria: $criteria,
             relations: ['driver', 'coordinate', 'fee', 'time', 'parcel', 'parcelUserInfo'],
             orderBy: ['created_at' => 'desc'],
             limit: $request->limit ?? 20,
@@ -154,7 +168,7 @@ class DeliveryController extends Controller
      */
     public function cancel(string $id): JsonResponse
     {
-        $trip = $this->tripRequestService->findOneBy(criteria: ['id' => $id, 'customer_id' => auth('api')->id()]);
+        $trip = $this->tripRequestService->findOneBy(criteria: ['id' => $id]);
 
         if (!$trip) {
             return response()->json(responseFormatter(DEFAULT_404), 403);
@@ -247,5 +261,35 @@ class DeliveryController extends Controller
             'pickup_point' => $pickupPoint,
             'destination_point' => $destinationPoint,
         ];
+    }
+
+    /**
+     * Find an existing customer by phone/email, or create a new one.
+     */
+    protected function findOrCreateCustomer(Request $request): User
+    {
+        $phone = $request->input('customer_phone', $request->input('sender_phone'));
+        $name = $request->input('customer_name', $request->input('sender_name', 'Partner Customer'));
+
+        $customer = User::where('phone', $phone)->first();
+
+        if ($customer) {
+            return $customer;
+        }
+
+        [$firstName, $lastName] = $this->splitName($name);
+
+        return $this->customerService->createExternalCustomer([
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'email' => null,
+            'phone' => $phone,
+        ]);
+    }
+
+    protected function splitName(string $name): array
+    {
+        $parts = preg_split('/\s+/', trim($name), 2);
+        return [$parts[0], $parts[1] ?? $parts[0]];
     }
 }
