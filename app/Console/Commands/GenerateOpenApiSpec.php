@@ -124,10 +124,109 @@ class GenerateOpenApiSpec extends Command
                     }
                 }
             }
+
+            // No FormRequest found - try to extract inline validation from source
+            return $this->extractInlineValidation($reflection);
         } catch (\Throwable $e) {
             // Ignore reflection errors
         }
         return null;
+    }
+
+    private function extractInlineValidation(ReflectionMethod $reflection): ?array
+    {
+        $filename = $reflection->getFileName();
+        if (!$filename || !file_exists($filename)) {
+            return null;
+        }
+
+        $startLine = $reflection->getStartLine();
+        $endLine = $reflection->getEndLine();
+        $lines = file($filename, FILE_IGNORE_NEW_LINES);
+        $methodSource = implode("\n", array_slice($lines, $startLine - 1, $endLine - $startLine + 1));
+
+        // Pattern 1: $request->validate([...])
+        if (preg_match('/\$request\s*->\s*validate\s*\(\s*(\[[\s\S]+\])\s*\)/', $methodSource, $m)) {
+            $rulesArray = $this->parseInlineRulesArray($this->extractBalancedArray($m[1]));
+            if ($rulesArray) {
+                return $this->convertRulesToSchema($rulesArray);
+            }
+        }
+
+        // Pattern 2: Validator::make($request->all(), [...])
+        if (preg_match('/Validator::make\s*\(\s*\$request->all\s*\(\s*\)\s*,\s*(\[[\s\S]+\])\s*\)/', $methodSource, $m)) {
+            $rulesArray = $this->parseInlineRulesArray($this->extractBalancedArray($m[1]));
+            if ($rulesArray) {
+                return $this->convertRulesToSchema($rulesArray);
+            }
+        }
+
+        // Pattern 3: $this->validate($request, [...])
+        if (preg_match('/\$this\s*->\s*validate\s*\(\s*\$request\s*,\s*(\[[\s\S]+\])\s*\)/', $methodSource, $m)) {
+            $rulesArray = $this->parseInlineRulesArray($this->extractBalancedArray($m[1]));
+            if ($rulesArray) {
+                return $this->convertRulesToSchema($rulesArray);
+            }
+        }
+
+        return null;
+    }
+
+    private function extractBalancedArray(string $text): string
+    {
+        // Find the first '[' and extract balanced content
+        $start = strpos($text, '[');
+        if ($start === false) {
+            return $text;
+        }
+
+        $depth = 0;
+        $result = '';
+        $len = strlen($text);
+        for ($i = $start; $i < $len; $i++) {
+            $char = $text[$i];
+            if ($char === '[') {
+                $depth++;
+            } elseif ($char === ']') {
+                $depth--;
+            }
+            $result .= $char;
+            if ($depth === 0) {
+                break;
+            }
+        }
+        // Strip outer brackets
+        return substr($result, 1, -1);
+    }
+
+    private function parseInlineRulesArray(string $arrayContent): ?array
+    {
+        // Try to eval the array content as PHP code
+        // This works for simple rule arrays with string keys and string values
+        $code = '<?php return [' . $arrayContent . '];';
+        $value = @eval('?>' . $code);
+        if (is_array($value)) {
+            // Filter out non-string rule values (some may use Rule::in() etc which can't be eval'd)
+            $cleanRules = [];
+            foreach ($value as $field => $rules) {
+                if (is_string($rules)) {
+                    $cleanRules[$field] = $rules;
+                } elseif (is_array($rules)) {
+                    $cleanRules[$field] = $rules;
+                }
+            }
+            return $cleanRules;
+        }
+
+        // Fallback: manually parse key => 'rules' pairs
+        $rules = [];
+        $pattern = "/['\"]([^'\"]+)['\"]\s*=>\s*['\"]([^'\"]+)['\"]/";
+        if (preg_match_all($pattern, $arrayContent, $matches, PREG_SET_ORDER)) {
+            foreach ($matches as $m) {
+                $rules[$m[1]] = $m[2];
+            }
+        }
+        return !empty($rules) ? $rules : null;
     }
 
     private function extractRulesFromFormRequest(string $formRequestClass, Route $route): ?array
@@ -426,6 +525,17 @@ class GenerateOpenApiSpec extends Command
             $op['security'] = [['PartnerAuth' => [], 'PartnerSecret' => []]];
         } elseif (in_array('auth:api', $middleware) || in_array('auth:api-customer', $middleware) || in_array('auth:api-driver', $middleware)) {
             $op['security'] = [['BearerAuth' => []]];
+        }
+
+        if ($method === 'GET' && $requestSchema && !empty($requestSchema['properties'])) {
+            foreach ($requestSchema['properties'] as $propName => $propSchema) {
+                $op['parameters'][] = [
+                    'name' => $propName,
+                    'in' => 'query',
+                    'required' => in_array($propName, $requestSchema['required'] ?? []),
+                    'schema' => $propSchema,
+                ];
+            }
         }
 
         if (in_array($method, ['POST', 'PUT', 'PATCH'])) {

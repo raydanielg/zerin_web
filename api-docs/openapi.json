@@ -87,11 +87,17 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "token": {
+                                        "type": "string"
+                                    },
+                                    "topic": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "token",
+                                    "topic"
+                                ]
                             }
                         }
                     }
@@ -618,7 +624,18 @@
                 ],
                 "summary": "Heat Map",
                 "operationId": "Admin_heatMap_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "date_range",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "pattern": "/^\\d{2}\\/\\d{2}\\/\\d{4}\\s-\\s\\d{2}\\/\\d{2}\\/\\d{4}$/",
+                            "type": "string",
+                            "nullable": true
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -663,7 +680,18 @@
                 ],
                 "summary": "Heat Map Overview",
                 "operationId": "Admin_heatMapOverview_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "date_range",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "pattern": "/^\\d{2}\\/\\d{2}\\/\\d{4}\\s-\\s\\d{2}\\/\\d{2}\\/\\d{4}$/",
+                            "type": "string",
+                            "nullable": true
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -2202,11 +2230,29 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "token": {
+                                        "type": "string"
+                                    },
+                                    "unique_id": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "medium": {
+                                        "enum": [
+                                            "google",
+                                            "facebook"
+                                        ],
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "token",
+                                    "unique_id",
+                                    "email",
+                                    "medium"
+                                ]
                             }
                         }
                     }
@@ -2389,11 +2435,15 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "phone_or_email": {
+                                        "minLength": 8,
+                                        "maxLength": 20,
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "phone_or_email"
+                                ]
                             }
                         }
                     }
@@ -2450,11 +2500,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "phone_or_email": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "phone_or_email"
+                                ]
                             }
                         }
                     }
@@ -2511,11 +2563,15 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "phone_or_email": {
+                                        "minLength": 8,
+                                        "maxLength": 20,
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "phone_or_email"
+                                ]
                             }
                         }
                     }
@@ -2572,11 +2628,20 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "phone_or_email": {
+                                        "minLength": 8,
+                                        "maxLength": 20,
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "minLength": 8,
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "phone_or_email",
+                                    "password"
+                                ]
                             }
                         }
                     }
@@ -2633,11 +2698,17 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "phone_or_email": {
+                                        "type": "string"
+                                    },
+                                    "otp": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "phone_or_email",
+                                    "otp"
+                                ]
                             }
                         }
                     }
@@ -2694,11 +2765,21 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "session_info": {
+                                        "type": "string"
+                                    },
+                                    "phone_or_email": {
+                                        "type": "string"
+                                    },
+                                    "code": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "session_info",
+                                    "phone_or_email",
+                                    "code"
+                                ]
                             }
                         }
                     }
@@ -2755,11 +2836,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "phone_or_email": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "phone_or_email"
+                                ]
                             }
                         }
                     }
@@ -2816,11 +2899,33 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
+                                    "first_name": {
+                                        "type": "string"
+                                    },
+                                    "last_name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
                                         "type": "string",
-                                        "description": "See source controller for exact fields"
+                                        "format": "email"
+                                    },
+                                    "phone": {
+                                        "pattern": "/^([0-9\\s\\-\\+\\(\\)]*)$/",
+                                        "type": "string",
+                                        "minLength": 8,
+                                        "maxLength": 17
+                                    },
+                                    "password": {
+                                        "minLength": 8,
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "first_name",
+                                    "last_name",
+                                    "phone",
+                                    "password"
+                                ]
                             }
                         }
                     }
@@ -2877,11 +2982,17 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "phone_or_email": {
+                                        "type": "string"
+                                    },
+                                    "token": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "phone_or_email",
+                                    "token"
+                                ]
                             }
                         }
                     }
@@ -2943,11 +3054,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "fcm_token": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "fcm_token"
+                                ]
                             }
                         }
                     }
@@ -3429,11 +3542,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "phone_or_email": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "phone_or_email"
+                                ]
                             }
                         }
                     }
@@ -3490,11 +3605,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "phone_or_email": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "phone_or_email"
+                                ]
                             }
                         }
                     }
@@ -3551,11 +3668,15 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "phone_or_email": {
+                                        "minLength": 8,
+                                        "maxLength": 20,
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "phone_or_email"
+                                ]
                             }
                         }
                     }
@@ -3612,11 +3733,20 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "phone_or_email": {
+                                        "minLength": 8,
+                                        "maxLength": 20,
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "minLength": 8,
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "phone_or_email",
+                                    "password"
+                                ]
                             }
                         }
                     }
@@ -3673,11 +3803,17 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "phone_or_email": {
+                                        "type": "string"
+                                    },
+                                    "otp": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "phone_or_email",
+                                    "otp"
+                                ]
                             }
                         }
                     }
@@ -3734,11 +3870,21 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "session_info": {
+                                        "type": "string"
+                                    },
+                                    "phone_or_email": {
+                                        "type": "string"
+                                    },
+                                    "code": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "session_info",
+                                    "phone_or_email",
+                                    "code"
+                                ]
                             }
                         }
                     }
@@ -3800,11 +3946,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "fcm_token": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "fcm_token"
+                                ]
                             }
                         }
                     }
@@ -4156,9 +4304,8 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "g-recaptcha-response": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -5571,7 +5718,32 @@
                 ],
                 "summary": "Get External Configuration",
                 "operationId": "Shared_getExternalConfiguration_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "mart_base_url",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "mart_token",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "drivemond_token",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -5848,7 +6020,24 @@
                 ],
                 "summary": "Get Zone",
                 "operationId": "Customer_getZone_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lng",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -5893,7 +6082,16 @@
                 ],
                 "summary": "Place Api Autocomplete",
                 "operationId": "Customer_placeApiAutocomplete_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "search_text",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -5938,7 +6136,48 @@
                 ],
                 "summary": "Distance Api",
                 "operationId": "Customer_distanceApi_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "origin_lat",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "origin_lng",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "destination_lat",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "destination_lng",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "mode",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -5983,7 +6222,16 @@
                 ],
                 "summary": "Place Api Details",
                 "operationId": "Customer_placeApiDetails_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "placeid",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -6028,7 +6276,24 @@
                 ],
                 "summary": "Geocode Api",
                 "operationId": "Customer_geocodeApi_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lng",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -6116,11 +6381,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id"
+                                ]
                             }
                         }
                     }
@@ -6539,7 +6806,24 @@
                 ],
                 "summary": "Get Zone",
                 "operationId": "Driver_getZone_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lng",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -6584,7 +6868,16 @@
                 ],
                 "summary": "Place Api Autocomplete",
                 "operationId": "Driver_placeApiAutocomplete_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "search_text",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -6629,7 +6922,48 @@
                 ],
                 "summary": "Distance Api",
                 "operationId": "Driver_distanceApi_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "origin_lat",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "origin_lng",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "destination_lat",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "destination_lng",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "mode",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -6719,7 +7053,24 @@
                 ],
                 "summary": "Geocode Api",
                 "operationId": "Driver_geocodeApi_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "lng",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -7127,11 +7478,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id"
+                                ]
                             }
                         }
                     }
@@ -8642,7 +8995,16 @@
                 ],
                 "summary": "Status Cancellation Reason",
                 "operationId": "Admin_statusCancellationReason_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -8730,11 +9092,26 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "parcel_weight_unit": {
+                                        "enum": [
+                                            "mg",
+                                            "g",
+                                            "kg",
+                                            "t",
+                                            "oz",
+                                            "lb",
+                                            "st",
+                                            "short ton",
+                                            "long ton",
+                                            "ct",
+                                            "troy oz"
+                                        ],
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "parcel_weight_unit"
+                                ]
                             }
                         }
                     }
@@ -9167,7 +9544,16 @@
                 ],
                 "summary": "Status Refund Reason",
                 "operationId": "Admin_statusRefundReason_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -9601,7 +9987,16 @@
                 ],
                 "summary": "Status Safety Alert Reason",
                 "operationId": "Admin_statusSafetyAlertReason_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -9915,7 +10310,16 @@
                 ],
                 "summary": "Status Safety Precaution",
                 "operationId": "Admin_statusSafetyPrecaution_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -10412,7 +10816,16 @@
                 ],
                 "summary": "Status Question Answer",
                 "operationId": "Admin_statusQuestionAnswer_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -10696,7 +11109,16 @@
                 ],
                 "summary": "Status Support Saved Reply",
                 "operationId": "Admin_statusSupportSavedReply_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -11506,7 +11928,16 @@
                 ],
                 "summary": "Status Cancellation Reason",
                 "operationId": "Admin_statusCancellationReason_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -12171,7 +12602,26 @@
                 ],
                 "summary": "Update Notification Settings",
                 "operationId": "Admin_updateNotificationSettings_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -13832,7 +14282,23 @@
                 ],
                 "summary": "Business Pages",
                 "operationId": "Admin_businessPages_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "enum": [
+                                "about_us",
+                                "privacy_policy",
+                                "terms_and_conditions",
+                                "legal",
+                                "refund_policy"
+                            ],
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -19444,9 +19910,10 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
+                                    "customer_note": {
                                         "type": "string",
-                                        "description": "See source controller for exact fields"
+                                        "maxLength": 31,
+                                        "nullable": true
                                     }
                                 }
                             }
@@ -19514,11 +19981,16 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "zones": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
                                     }
-                                }
+                                },
+                                "required": [
+                                    "zones"
+                                ]
                             }
                         }
                     }
@@ -19785,7 +20257,16 @@
                 ],
                 "summary": "Suggested Vehicle Category",
                 "operationId": "Customer_suggestedVehicleCategory_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "parcel_weight",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -20119,7 +20600,16 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -21544,11 +22034,31 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
+                                    "name": {
                                         "type": "string",
-                                        "description": "See source controller for exact fields"
+                                        "maxLength": 255
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "maxLength": 255,
+                                        "nullable": true
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "maxLength": 20,
+                                        "nullable": true
+                                    },
+                                    "webhook_url": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "maxLength": 500,
+                                        "nullable": true
                                     }
-                                }
+                                },
+                                "required": [
+                                    "name"
+                                ]
                             }
                         }
                     }
@@ -21722,11 +22232,29 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
+                                    "name": {
                                         "type": "string",
-                                        "description": "See source controller for exact fields"
+                                        "maxLength": 255
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "maxLength": 255,
+                                        "nullable": true
+                                    },
+                                    "webhook_url": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "maxLength": 500,
+                                        "nullable": true
+                                    },
+                                    "is_active": {
+                                        "type": "boolean"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "name"
+                                ]
                             }
                         }
                     }
@@ -22535,7 +23063,16 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -23152,7 +23689,16 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -23769,7 +24315,16 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -24533,7 +25088,16 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -24853,11 +25417,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id"
+                                ]
                             }
                         }
                     }
@@ -25198,7 +25764,24 @@
                 ],
                 "summary": "List",
                 "operationId": "Customer_list_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -25248,7 +25831,24 @@
                 ],
                 "summary": "Referral Earning History",
                 "operationId": "Customer_referralEarningHistory_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -25298,7 +25898,24 @@
                 ],
                 "summary": "List",
                 "operationId": "Driver_list_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -25348,7 +25965,24 @@
                 ],
                 "summary": "Referral Earning History",
                 "operationId": "Driver_referralEarningHistory_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -25398,7 +26032,24 @@
                 ],
                 "summary": "Payable Transaction History",
                 "operationId": "Driver_payableTransactionHistory_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -25448,7 +26099,24 @@
                 ],
                 "summary": "Cash Collect Transaction History",
                 "operationId": "Driver_cashCollectTransactionHistory_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -25498,7 +26166,24 @@
                 ],
                 "summary": "Wallet Transaction History",
                 "operationId": "Driver_walletTransactionHistory_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -26513,11 +27198,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "bidding_id": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "bidding_id"
+                                ]
                             }
                         }
                     }
@@ -26538,6 +27225,22 @@
                         "required": true,
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
                         }
                     }
                 ],
@@ -26647,11 +27350,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "status": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "status"
+                                ]
                             }
                         }
                     }
@@ -26724,7 +27429,76 @@
                 ],
                 "summary": "Ride List",
                 "operationId": "Customer_rideList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "enum": [
+                                "today",
+                                "previous_day",
+                                "this_week",
+                                "last_week",
+                                "last_7_days",
+                                "this_month",
+                                "last_month",
+                                "this_year",
+                                "all_time",
+                                "custom_date"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "enum": [
+                                "all",
+                                "pending",
+                                "ongoing",
+                                "completed",
+                                "cancelled",
+                                "returned"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "end",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -26872,11 +27646,25 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
+                                    },
+                                    "driver_id": {
+                                        "type": "string"
+                                    },
+                                    "action": {
+                                        "enum": [
+                                            "accepted",
+                                            "rejected"
+                                        ],
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id",
+                                    "driver_id",
+                                    "action"
+                                ]
                             }
                         }
                     }
@@ -26988,11 +27776,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id"
+                                ]
                             }
                         }
                     }
@@ -27054,11 +27844,22 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
+                                    },
+                                    "is_reached": {
+                                        "enum": [
+                                            "coordinate_1",
+                                            "coordinate_2",
+                                            "destination"
+                                        ],
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id",
+                                    "is_reached"
+                                ]
                             }
                         }
                     }
@@ -27072,7 +27873,24 @@
                 ],
                 "summary": "Pending Parcel List",
                 "operationId": "Customer_pendingParcelList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -27122,7 +27940,24 @@
                 ],
                 "summary": "Unpaid Parcel Request",
                 "operationId": "Customer_unpaidParcelRequest_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -27304,11 +28139,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "scheduled_at": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "scheduled_at"
+                                ]
                             }
                         }
                     }
@@ -27420,11 +28257,21 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "latitude": {
+                                        "type": "string"
+                                    },
+                                    "longitude": {
+                                        "type": "string"
+                                    },
+                                    "zoneId": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "latitude",
+                                    "longitude",
+                                    "zoneId"
+                                ]
                             }
                         }
                     }
@@ -27438,7 +28285,28 @@
                 ],
                 "summary": "Payment",
                 "operationId": "Customer_payment_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "trip_request_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "payment_method",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "enum": [
+                                "wallet",
+                                "cash"
+                            ],
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -27488,7 +28356,92 @@
                 ],
                 "summary": "Digital Payment",
                 "operationId": "Customer_digitalPayment_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "trip_request_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "payment_method",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "enum": [
+                                "ssl_commerz",
+                                "stripe",
+                                "paypal",
+                                "razor_pay",
+                                "paystack",
+                                "senang_pay",
+                                "paymob_accept",
+                                "flutterwave",
+                                "paytm",
+                                "paytabs",
+                                "liqpay",
+                                "mercadopago",
+                                "bkash",
+                                "fatoorah",
+                                "xendit",
+                                "amazon_pay",
+                                "iyzi_pay",
+                                "hyper_pay",
+                                "foloosi",
+                                "ccavenue",
+                                "pvit",
+                                "moncash",
+                                "thawani",
+                                "tap",
+                                "viva_wallet",
+                                "hubtel",
+                                "maxicash",
+                                "esewa",
+                                "swish",
+                                "momo",
+                                "payfast",
+                                "worldpay",
+                                "sixcash",
+                                "ssl_commerz",
+                                "stripe",
+                                "paypal",
+                                "razor_pay",
+                                "paystack",
+                                "senang_pay",
+                                "paymob_accept",
+                                "flutterwave",
+                                "paytm",
+                                "paytabs",
+                                "liqpay",
+                                "mercadopago",
+                                "bkash",
+                                "fatoorah",
+                                "xendit",
+                                "amazon_pay",
+                                "iyzi_pay",
+                                "hyper_pay",
+                                "foloosi",
+                                "ccavenue",
+                                "pvit",
+                                "moncash",
+                                "thawani",
+                                "tap",
+                                "viva_wallet",
+                                "hubtel",
+                                "maxicash",
+                                "esewa",
+                                "swish",
+                                "momo",
+                                "payfast",
+                                "worldpay",
+                                "sixcash"
+                            ],
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -27675,11 +28628,22 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
+                                    "trip_request_id": {
                                         "type": "string",
-                                        "description": "See source controller for exact fields"
+                                        "format": "uuid"
+                                    },
+                                    "lat": {
+                                        "type": "string"
+                                    },
+                                    "lng": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id",
+                                    "lat",
+                                    "lng"
+                                ]
                             }
                         }
                     }
@@ -28061,7 +29025,28 @@
                 ],
                 "summary": "Payment",
                 "operationId": "Driver_payment_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "trip_request_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "payment_method",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "enum": [
+                                "wallet",
+                                "cash"
+                            ],
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -28111,7 +29096,16 @@
                 ],
                 "summary": "Show Ride Details",
                 "operationId": "Driver_showRideDetails_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "trip_request_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -28259,11 +29253,21 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
+                                    },
+                                    "waiting_status": {
+                                        "enum": [
+                                            "pause",
+                                            "resume"
+                                        ],
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id",
+                                    "waiting_status"
+                                ]
                             }
                         }
                     }
@@ -28375,11 +29379,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id"
+                                ]
                             }
                         }
                     }
@@ -28441,11 +29447,22 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
+                                    },
+                                    "is_reached": {
+                                        "enum": [
+                                            "coordinate_1",
+                                            "coordinate_2",
+                                            "destination"
+                                        ],
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id",
+                                    "is_reached"
+                                ]
                             }
                         }
                     }
@@ -28459,7 +29476,24 @@
                 ],
                 "summary": "Pending Parcel List",
                 "operationId": "Driver_pendingParcelList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -28509,7 +29543,24 @@
                 ],
                 "summary": "Unpaid Parcel Request",
                 "operationId": "Driver_unpaidParcelRequest_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -28607,11 +29658,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id"
+                                ]
                             }
                         }
                     }
@@ -28739,11 +29792,21 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "latitude": {
+                                        "type": "string"
+                                    },
+                                    "longitude": {
+                                        "type": "string"
+                                    },
+                                    "zoneId": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "latitude",
+                                    "longitude",
+                                    "zoneId"
+                                ]
                             }
                         }
                     }
@@ -28816,7 +29879,24 @@
                 ],
                 "summary": "Pending Ride List",
                 "operationId": "Driver_pendingRideList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -28914,11 +29994,19 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
+                                    },
+                                    "otp": {
+                                        "minLength": 4,
+                                        "maxLength": 4,
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id",
+                                    "otp"
+                                ]
                             }
                         }
                     }
@@ -29030,11 +30118,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id"
+                                ]
                             }
                         }
                     }
@@ -29096,11 +30186,21 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "trip_request_id": {
+                                        "type": "string"
+                                    },
+                                    "return_time": {
+                                        "nullable": true,
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "status",
+                                    "trip_request_id"
+                                ]
                             }
                         }
                     }
@@ -29162,11 +30262,21 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
+                                    },
+                                    "action": {
+                                        "enum": [
+                                            "accepted",
+                                            "rejected"
+                                        ],
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id",
+                                    "action"
+                                ]
                             }
                         }
                     }
@@ -29228,11 +30338,17 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
+                                    },
+                                    "bid_fare": {
+                                        "type": "number",
+                                        "maximum": 99999999
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id"
+                                ]
                             }
                         }
                     }
@@ -29369,11 +30485,22 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
+                                    "trip_request_id": {
                                         "type": "string",
-                                        "description": "See source controller for exact fields"
+                                        "format": "uuid"
+                                    },
+                                    "lat": {
+                                        "type": "string"
+                                    },
+                                    "lng": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id",
+                                    "lat",
+                                    "lng"
+                                ]
                             }
                         }
                     }
@@ -29703,11 +30830,18 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
+                                    "trip_request_id": {
+                                        "type": "string"
+                                    },
+                                    "file": {
                                         "type": "string",
-                                        "description": "See source controller for exact fields"
+                                        "format": "binary"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id",
+                                    "file"
+                                ]
                             }
                         }
                     }
@@ -30661,7 +31795,24 @@
                 ],
                 "summary": "Index",
                 "operationId": "Customer_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -30759,11 +31910,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "points": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "points"
+                                ]
                             }
                         }
                     }
@@ -30827,7 +31980,24 @@
                 ],
                 "summary": "Index",
                 "operationId": "Customer_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -31041,11 +32211,21 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "token": {
+                                        "type": "string"
+                                    },
+                                    "external_base_url": {
+                                        "type": "string"
+                                    },
+                                    "external_token": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "token",
+                                    "external_base_url",
+                                    "external_token"
+                                ]
                             }
                         }
                     }
@@ -31107,11 +32287,25 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "bearer_token": {
+                                        "type": "string"
+                                    },
+                                    "token": {
+                                        "type": "string"
+                                    },
+                                    "external_base_url": {
+                                        "type": "string"
+                                    },
+                                    "external_token": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "bearer_token",
+                                    "token",
+                                    "external_base_url",
+                                    "external_token"
+                                ]
                             }
                         }
                     }
@@ -31173,11 +32367,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "coupon_id": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "coupon_id"
+                                ]
                             }
                         }
                     }
@@ -31405,11 +32601,25 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "latitude": {
+                                        "type": "string"
+                                    },
+                                    "longitude": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "address_label": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "latitude",
+                                    "longitude",
+                                    "address",
+                                    "address_label"
+                                ]
                             }
                         }
                     }
@@ -31530,11 +32740,29 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "latitude": {
+                                        "type": "string"
+                                    },
+                                    "longitude": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "address_label": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "id",
+                                    "latitude",
+                                    "longitude",
+                                    "address",
+                                    "address_label"
+                                ]
                             }
                         }
                     }
@@ -31646,11 +32874,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "amount": {
+                                        "type": "number"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "amount"
+                                ]
                             }
                         }
                     }
@@ -31712,11 +32942,33 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "currency": {
+                                        "type": "string"
+                                    },
+                                    "amount": {
+                                        "type": "string"
+                                    },
+                                    "bearer_token": {
+                                        "type": "string"
+                                    },
+                                    "token": {
+                                        "type": "string"
+                                    },
+                                    "external_base_url": {
+                                        "type": "string"
+                                    },
+                                    "external_token": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "currency",
+                                    "amount",
+                                    "bearer_token",
+                                    "token",
+                                    "external_base_url",
+                                    "external_token"
+                                ]
                             }
                         }
                     }
@@ -31780,7 +33032,100 @@
                 ],
                 "summary": "Add Fund Digitally",
                 "operationId": "Customer_addFundDigitally_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "payment_method",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "enum": [
+                                "ssl_commerz",
+                                "stripe",
+                                "paypal",
+                                "razor_pay",
+                                "paystack",
+                                "senang_pay",
+                                "paymob_accept",
+                                "flutterwave",
+                                "paytm",
+                                "paytabs",
+                                "liqpay",
+                                "mercadopago",
+                                "bkash",
+                                "fatoorah",
+                                "xendit",
+                                "amazon_pay",
+                                "iyzi_pay",
+                                "hyper_pay",
+                                "foloosi",
+                                "ccavenue",
+                                "pvit",
+                                "moncash",
+                                "thawani",
+                                "tap",
+                                "viva_wallet",
+                                "hubtel",
+                                "maxicash",
+                                "esewa",
+                                "swish",
+                                "momo",
+                                "payfast",
+                                "worldpay",
+                                "sixcash",
+                                "ssl_commerz",
+                                "stripe",
+                                "paypal",
+                                "razor_pay",
+                                "paystack",
+                                "senang_pay",
+                                "paymob_accept",
+                                "flutterwave",
+                                "paytm",
+                                "paytabs",
+                                "liqpay",
+                                "mercadopago",
+                                "bkash",
+                                "fatoorah",
+                                "xendit",
+                                "amazon_pay",
+                                "iyzi_pay",
+                                "hyper_pay",
+                                "foloosi",
+                                "ccavenue",
+                                "pvit",
+                                "moncash",
+                                "thawani",
+                                "tap",
+                                "viva_wallet",
+                                "hubtel",
+                                "maxicash",
+                                "esewa",
+                                "swish",
+                                "momo",
+                                "payfast",
+                                "worldpay",
+                                "sixcash"
+                            ],
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -31946,7 +33291,24 @@
                 ],
                 "summary": "Index",
                 "operationId": "Driver_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -32096,7 +33458,42 @@
                 ],
                 "summary": "My Activity",
                 "operationId": "Driver_myActivity_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "from",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -32262,7 +33659,24 @@
                 ],
                 "summary": "Income Statement",
                 "operationId": "Driver_incomeStatement_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -32428,7 +33842,100 @@
                 ],
                 "summary": "Pay Digitally",
                 "operationId": "Driver_payDigitally_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "payment_method",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "enum": [
+                                "ssl_commerz",
+                                "stripe",
+                                "paypal",
+                                "razor_pay",
+                                "paystack",
+                                "senang_pay",
+                                "paymob_accept",
+                                "flutterwave",
+                                "paytm",
+                                "paytabs",
+                                "liqpay",
+                                "mercadopago",
+                                "bkash",
+                                "fatoorah",
+                                "xendit",
+                                "amazon_pay",
+                                "iyzi_pay",
+                                "hyper_pay",
+                                "foloosi",
+                                "ccavenue",
+                                "pvit",
+                                "moncash",
+                                "thawani",
+                                "tap",
+                                "viva_wallet",
+                                "hubtel",
+                                "maxicash",
+                                "esewa",
+                                "swish",
+                                "momo",
+                                "payfast",
+                                "worldpay",
+                                "sixcash",
+                                "ssl_commerz",
+                                "stripe",
+                                "paypal",
+                                "razor_pay",
+                                "paystack",
+                                "senang_pay",
+                                "paymob_accept",
+                                "flutterwave",
+                                "paytm",
+                                "paytabs",
+                                "liqpay",
+                                "mercadopago",
+                                "bkash",
+                                "fatoorah",
+                                "xendit",
+                                "amazon_pay",
+                                "iyzi_pay",
+                                "hyper_pay",
+                                "foloosi",
+                                "ccavenue",
+                                "pvit",
+                                "moncash",
+                                "thawani",
+                                "tap",
+                                "viva_wallet",
+                                "hubtel",
+                                "maxicash",
+                                "esewa",
+                                "swish",
+                                "momo",
+                                "payfast",
+                                "worldpay",
+                                "sixcash"
+                            ],
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -32528,7 +34035,24 @@
                 ],
                 "summary": "Index",
                 "operationId": "Driver_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -32626,11 +34150,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "points": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "points"
+                                ]
                             }
                         }
                     }
@@ -32644,7 +34170,24 @@
                 ],
                 "summary": "Methods",
                 "operationId": "Driver_methods_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -32742,11 +34285,17 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "withdraw_method": {
+                                        "type": "string"
+                                    },
+                                    "amount": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "withdraw_method",
+                                    "amount"
+                                ]
                             }
                         }
                     }
@@ -32760,7 +34309,24 @@
                 ],
                 "summary": "Get Pending Withdraw Requests",
                 "operationId": "Driver_getPendingWithdrawRequests_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -32810,7 +34376,24 @@
                 ],
                 "summary": "Get Settled Withdraw Requests",
                 "operationId": "Driver_getSettledWithdrawRequests_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -32860,7 +34443,24 @@
                 ],
                 "summary": "Index",
                 "operationId": "Driver_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -32958,11 +34558,17 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "withdraw_method": {
+                                        "type": "string"
+                                    },
+                                    "method_name": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "withdraw_method",
+                                    "method_name"
+                                ]
                             }
                         }
                     }
@@ -33092,11 +34698,17 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "withdraw_method": {
+                                        "type": "string"
+                                    },
+                                    "method_name": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "withdraw_method",
+                                    "method_name"
+                                ]
                             }
                         }
                     }
@@ -33348,11 +34960,29 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "user_id": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "latitude": {
+                                        "type": "string"
+                                    },
+                                    "longitude": {
+                                        "type": "string"
+                                    },
+                                    "zone_id": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "user_id",
+                                    "type",
+                                    "latitude",
+                                    "longitude",
+                                    "zone_id"
+                                ]
                             }
                         }
                     }
@@ -33409,11 +35039,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "trip_request_id": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "trip_request_id"
+                                ]
                             }
                         }
                     }
@@ -33470,11 +35102,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "notification_id": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "notification_id"
+                                ]
                             }
                         }
                     }
@@ -33871,7 +35505,16 @@
                 ],
                 "summary": "Update Status",
                 "operationId": "Admin_updateStatus_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -36121,7 +37764,17 @@
                 ],
                 "summary": "Get All Ajax",
                 "operationId": "Admin_getAllAjax_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -36166,7 +37819,17 @@
                 ],
                 "summary": "Get All Ajax Vehicle",
                 "operationId": "Admin_getAllAjaxVehicle_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "nullable": true,
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -36704,11 +38367,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "amount": {
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "amount"
+                                ]
                             }
                         }
                     }
@@ -38830,7 +40495,24 @@
                 ],
                 "summary": "Update Status",
                 "operationId": "Admin_updateStatus_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -39231,6 +40913,14 @@
                         "required": true,
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
                         }
                     }
                 ],
@@ -41387,11 +43077,14 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "deny_note": {
+                                        "maxLength": 151,
+                                        "type": "string"
                                     }
-                                }
+                                },
+                                "required": [
+                                    "deny_note"
+                                ]
                             }
                         }
                     }
@@ -42027,7 +43720,16 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
