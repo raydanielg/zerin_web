@@ -119,6 +119,14 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "zone_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -170,6 +178,14 @@
                         "name": "type",
                         "in": "path",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "zone_id",
+                        "in": "query",
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
@@ -281,6 +297,14 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "zone_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -332,6 +356,14 @@
                         "name": "type",
                         "in": "path",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "zone_id",
+                        "in": "query",
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
@@ -443,6 +475,14 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "zone_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -489,7 +529,24 @@
                 ],
                 "summary": "Fleet Map View Using Ajax",
                 "operationId": "Admin_fleetMapViewUsingAjax_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "zone_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -736,7 +793,32 @@
                 ],
                 "summary": "Heat Map Compare",
                 "operationId": "Admin_heatMapCompare_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "zone_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "time_frame",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "date_range",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -1059,6 +1141,14 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "driverId",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -1246,7 +1336,16 @@
                 ],
                 "summary": "Search Saved Topic Answer",
                 "operationId": "Admin_searchSavedTopicAnswer_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -1334,9 +1433,8 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "driverId": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -1512,7 +1610,16 @@
                 ],
                 "summary": "Seen Notification",
                 "operationId": "Admin_seenNotification_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -1647,7 +1754,16 @@
                 ],
                 "summary": "Generate Title",
                 "operationId": "Admin_generateTitle_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -1692,7 +1808,16 @@
                 ],
                 "summary": "Generate Description",
                 "operationId": "Admin_generateDescription_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -1737,7 +1862,24 @@
                 ],
                 "summary": "Generate Seo",
                 "operationId": "Admin_generateSeo_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -1782,7 +1924,16 @@
                 ],
                 "summary": "Generate Title Suggestion",
                 "operationId": "Admin_generateTitleSuggestion_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "keywords",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -1870,9 +2021,8 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "description": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -4364,9 +4514,14 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "mart_token": {
+                                        "type": "string"
+                                    },
+                                    "mart_base_url": {
+                                        "type": "string"
+                                    },
+                                    "drivemond_token": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -4427,7 +4582,32 @@
                 ],
                 "summary": "Update Settings",
                 "operationId": "Admin_updateSettings_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -4472,7 +4652,24 @@
                 ],
                 "summary": "Blog Page",
                 "operationId": "Admin_blogPage_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "publish_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -5083,7 +5280,24 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -5182,7 +5396,24 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "publish_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -5624,6 +5855,14 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
@@ -6716,7 +6955,32 @@
                 ],
                 "summary": "Calculate Distance",
                 "operationId": "Customer_calculateDistance_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "trip_request_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "driver_last_longitude",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "driver_last_latitude",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -7498,7 +7762,32 @@
                 ],
                 "summary": "Update Business Setting",
                 "operationId": "Admin_updateBusinessSetting_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -11163,7 +11452,32 @@
                 ],
                 "summary": "Update Referral Setting",
                 "operationId": "Admin_updateReferralSetting_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -14147,7 +14461,16 @@
                 ],
                 "summary": "Update Social Status",
                 "operationId": "Admin_updateSocialStatus_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -14237,7 +14560,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -14432,7 +14764,32 @@
                 ],
                 "summary": "Update Landing Page Setting",
                 "operationId": "Admin_updateLandingPageSetting_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -14603,7 +14960,16 @@
                 ],
                 "summary": "Get Our Solutions Section View",
                 "operationId": "Admin_getOurSolutionsSectionView_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -14806,7 +15172,16 @@
                 ],
                 "summary": "Status Our Solutions",
                 "operationId": "Admin_statusOurSolutions_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -15689,7 +16064,16 @@
                 ],
                 "summary": "Testimonial",
                 "operationId": "Admin_testimonial_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -15882,7 +16266,16 @@
                 ],
                 "summary": "Status Testimonial",
                 "operationId": "Admin_statusTestimonial_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -16365,9 +16758,11 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "app_debug": {
+                                        "type": "string"
+                                    },
+                                    "app_mode": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -16611,9 +17006,8 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "tables": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -16853,9 +17247,8 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "code": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -16871,7 +17264,16 @@
                 ],
                 "summary": "Update Status",
                 "operationId": "Admin_updateStatus_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -17940,7 +18342,16 @@
                 ],
                 "summary": "Find Channel",
                 "operationId": "Customer_findChannel_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "channel_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -18038,9 +18449,11 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "to": {
+                                        "type": "string"
+                                    },
+                                    "trip_id": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -18156,7 +18569,32 @@
                 ],
                 "summary": "Conversation",
                 "operationId": "Customer_conversation_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "channel_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -18206,7 +18644,24 @@
                 ],
                 "summary": "Channel List",
                 "operationId": "Customer_channelList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -18256,7 +18711,16 @@
                 ],
                 "summary": "Find Channel",
                 "operationId": "Driver_findChannel_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "channel_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -18354,9 +18818,11 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "to": {
+                                        "type": "string"
+                                    },
+                                    "trip_id": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -18472,7 +18938,32 @@
                 ],
                 "summary": "Conversation",
                 "operationId": "Driver_conversation_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "channel_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -18522,7 +19013,24 @@
                 ],
                 "summary": "Channel List",
                 "operationId": "Driver_channelList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -18786,9 +19294,11 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "question_id": {
+                                        "type": "string"
+                                    },
+                                    "channel_id": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -19169,7 +19679,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -19320,7 +19839,16 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -19473,7 +20001,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -20157,7 +20694,24 @@
                 ],
                 "summary": "Category Fare List",
                 "operationId": "Customer_categoryFareList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -20207,7 +20761,32 @@
                 ],
                 "summary": "Vehicle List",
                 "operationId": "Customer_vehicleList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "weight_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -20316,7 +20895,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -20654,7 +21242,16 @@
                 ],
                 "summary": "Download",
                 "operationId": "Admin_download_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -20699,7 +21296,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -20897,7 +21503,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -21181,7 +21796,16 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -21226,7 +21850,16 @@
                 ],
                 "summary": "Download",
                 "operationId": "Admin_download_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -21271,7 +21904,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -21316,7 +21958,16 @@
                 ],
                 "summary": "Trashed",
                 "operationId": "Admin_trashed_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -21714,7 +22365,24 @@
                 ],
                 "summary": "Index",
                 "operationId": "Partner_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -21901,7 +22569,24 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -22322,7 +23007,16 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -22507,7 +23201,24 @@
                 ],
                 "summary": "List",
                 "operationId": "Customer_list_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -22595,9 +23306,8 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "banner_id": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -22613,7 +23323,32 @@
                 ],
                 "summary": "List",
                 "operationId": "Customer_list_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "category_type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -22711,9 +23446,14 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "coupon_code": {
+                                        "type": "string"
+                                    },
+                                    "pickup_coordinates": {
+                                        "type": "string"
+                                    },
+                                    "vehicle_category_id": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -22729,7 +23469,24 @@
                 ],
                 "summary": "List",
                 "operationId": "Customer_list_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -22779,7 +23536,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -23117,7 +23883,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -23162,7 +23937,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -23207,7 +23991,16 @@
                 ],
                 "summary": "Trashed",
                 "operationId": "Admin_trashed_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -23360,7 +24153,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -23743,7 +24545,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -23788,7 +24599,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -23833,7 +24653,16 @@
                 ],
                 "summary": "Trashed",
                 "operationId": "Admin_trashed_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -24369,7 +25198,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -24414,7 +25252,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -24459,7 +25306,16 @@
                 ],
                 "summary": "Trashed",
                 "operationId": "Admin_trashed_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -24657,7 +25513,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -25196,7 +26061,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -25241,7 +26115,32 @@
                 ],
                 "summary": "Index",
                 "operationId": "Customer_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "is_saved",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -25437,7 +26336,32 @@
                 ],
                 "summary": "Index",
                 "operationId": "Driver_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "is_saved",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -25656,6 +26580,14 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -25715,6 +26647,14 @@
                         "name": "reviewed",
                         "in": "path",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
@@ -26233,7 +27173,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -26278,7 +27227,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -26323,7 +27281,24 @@
                 ],
                 "summary": "Earning Report",
                 "operationId": "Admin_earningReport_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -26368,7 +27343,16 @@
                 ],
                 "summary": "Earning Report Export",
                 "operationId": "Admin_earningReportExport_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -26647,7 +27631,24 @@
                 ],
                 "summary": "Expense Report",
                 "operationId": "Admin_expenseReport_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -26692,7 +27693,16 @@
                 ],
                 "summary": "Expense Report Export",
                 "operationId": "Admin_expenseReportExport_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -26791,7 +27801,24 @@
                 ],
                 "summary": "Drivers Near Me",
                 "operationId": "Customer_driversNearMe_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -27548,7 +28575,16 @@
                 ],
                 "summary": "Final Fare Calculation",
                 "operationId": "Customer_finalFareCalculation_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "trip_request_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -28159,7 +29195,24 @@
                 ],
                 "summary": "Pending Ride List",
                 "operationId": "Customer_pendingRideList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -28975,7 +30028,16 @@
                 ],
                 "summary": "Final Fare Calculation",
                 "operationId": "Driver_finalFareCalculation_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "trip_request_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -29825,6 +30887,14 @@
                         "name": "ride_request_id",
                         "in": "path",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
@@ -30863,6 +31933,86 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "customer_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "driver_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "trip_type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "trip_status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -30914,6 +32064,14 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
@@ -31017,7 +32175,96 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "customer_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "driver_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "trip_type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "trip_status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -31062,7 +32309,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -31112,6 +32368,14 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
@@ -31169,6 +32433,22 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -31220,6 +32500,14 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
@@ -31502,7 +32790,40 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -31552,6 +32873,14 @@
                         "name": "type",
                         "in": "path",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
@@ -31606,6 +32935,14 @@
                         "name": "type",
                         "in": "path",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
@@ -32503,7 +33840,24 @@
                 ],
                 "summary": "Get Addresses",
                 "operationId": "Customer_getAddresses_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -32982,7 +34336,24 @@
                 ],
                 "summary": "Bonus List",
                 "operationId": "Customer_bonusList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -35122,7 +36493,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -35559,7 +36939,24 @@
                 ],
                 "summary": "Get All Ajax",
                 "operationId": "Admin_getAllAjax_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "all_customer",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -35649,7 +37046,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -35694,7 +37100,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -35747,6 +37162,14 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -35793,7 +37216,16 @@
                 ],
                 "summary": "Trash",
                 "operationId": "Admin_trash_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -35892,7 +37324,16 @@
                 ],
                 "summary": "Get Level Wise Customer",
                 "operationId": "Admin_getLevelWiseCustomer_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "levels",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -35991,7 +37432,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -36320,7 +37770,16 @@
                 ],
                 "summary": "Update Status",
                 "operationId": "Admin_updateStatus_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -36365,7 +37824,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -36410,7 +37878,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -36455,7 +37932,16 @@
                 ],
                 "summary": "Trash",
                 "operationId": "Admin_trash_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -36698,7 +38184,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -36784,9 +38279,8 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "page": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -36843,9 +38337,8 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "page": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -36902,9 +38395,8 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "page": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -37077,7 +38569,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -37122,7 +38623,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -37327,7 +38837,16 @@
                 ],
                 "summary": "Profile Update Request List",
                 "operationId": "Admin_profileUpdateRequestList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -37372,7 +38891,40 @@
                 ],
                 "summary": "Profile Update Request List Export",
                 "operationId": "Admin_profileUpdateRequestListExport_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -37469,9 +39021,8 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "payload": {
-                                        "type": "string",
-                                        "description": "See source controller for exact fields"
+                                    "status": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -37719,7 +39270,24 @@
                 ],
                 "summary": "Update Status",
                 "operationId": "Admin_updateStatus_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -37919,7 +39487,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -37964,7 +39541,16 @@
                 ],
                 "summary": "Trash",
                 "operationId": "Admin_trash_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -38063,7 +39649,40 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -38108,7 +39727,24 @@
                 ],
                 "summary": "Driver Transaction Export",
                 "operationId": "Admin_driverTransactionExport_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -38158,6 +39794,14 @@
                         "name": "id",
                         "in": "path",
                         "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "action",
+                        "in": "query",
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
@@ -38387,7 +40031,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -38716,7 +40369,16 @@
                 ],
                 "summary": "Update Status",
                 "operationId": "Admin_updateStatus_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -38806,7 +40468,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -38851,7 +40522,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -38896,7 +40576,16 @@
                 ],
                 "summary": "Trash",
                 "operationId": "Admin_trash_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -39094,7 +40783,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -39423,7 +41121,24 @@
                 ],
                 "summary": "Status Update",
                 "operationId": "Admin_statusUpdate_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -39468,7 +41183,24 @@
                 ],
                 "summary": "Active Update",
                 "operationId": "Admin_activeUpdate_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -39513,7 +41245,32 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -39751,6 +41508,14 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -39797,7 +41562,24 @@
                 ],
                 "summary": "Multiple Invoice",
                 "operationId": "Admin_multipleInvoice_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -39842,7 +41624,64 @@
                 ],
                 "summary": "Unverified List",
                 "operationId": "Admin_unverifiedList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "verification_status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order_by",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -39887,7 +41726,72 @@
                 ],
                 "summary": "Export Unverified List",
                 "operationId": "Admin_exportUnverifiedList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "verification_status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "order_by",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -40112,7 +42016,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -40557,7 +42470,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -40602,7 +42524,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -40647,7 +42578,16 @@
                 ],
                 "summary": "Trash",
                 "operationId": "Admin_trash_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -40800,7 +42740,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -41146,7 +43095,24 @@
                 ],
                 "summary": "Get Roles",
                 "operationId": "Admin_getRoles_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "employee_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -41191,7 +43157,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -41236,7 +43211,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -41281,7 +43265,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -41511,7 +43504,16 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -41610,7 +43612,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -41655,7 +43666,24 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -41700,7 +43728,32 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -41745,7 +43798,24 @@
                 ],
                 "summary": "Category Fare List",
                 "operationId": "Customer_categoryFareList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -41936,7 +44006,24 @@
                 ],
                 "summary": "List",
                 "operationId": "Driver_list_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -41986,7 +44073,24 @@
                 ],
                 "summary": "Brand List",
                 "operationId": "Driver_brandList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -42036,7 +44140,24 @@
                 ],
                 "summary": "Model List",
                 "operationId": "Driver_modelList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -42086,7 +44207,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -42415,7 +44545,24 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -42514,7 +44661,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -42559,7 +44715,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -42604,7 +44769,16 @@
                 ],
                 "summary": "Trashed",
                 "operationId": "Admin_trashed_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -42757,7 +44931,24 @@
                 ],
                 "summary": "New Vehicle Request List",
                 "operationId": "Admin_newVehicleRequestList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "vehicle_request_status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -42802,7 +44993,24 @@
                 ],
                 "summary": "Export Vehicle Request",
                 "operationId": "Admin_exportVehicleRequest_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "vehicle_request_status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -43098,7 +45306,16 @@
                 ],
                 "summary": "New Vehicle Update List",
                 "operationId": "Admin_newVehicleUpdateList_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -43143,7 +45360,16 @@
                 ],
                 "summary": "Export Vehicle Update",
                 "operationId": "Admin_exportVehicleUpdate_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -43436,7 +45662,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -43927,7 +46162,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -43972,7 +46216,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -44062,7 +46315,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -44346,7 +46608,16 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -44391,7 +46662,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -44436,7 +46716,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -44543,6 +46832,14 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "model_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -44589,7 +46886,16 @@
                 ],
                 "summary": "Trashed",
                 "operationId": "Admin_trashed_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -44742,7 +47048,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -45026,7 +47341,16 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -45071,7 +47395,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -45116,7 +47449,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -45359,7 +47701,24 @@
                 ],
                 "summary": "List",
                 "operationId": "Driver_list_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -45409,7 +47768,16 @@
                 ],
                 "summary": "Index",
                 "operationId": "Admin_index_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -45693,7 +48061,16 @@
                 ],
                 "summary": "Status",
                 "operationId": "Admin_status_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -45990,7 +48367,16 @@
                 ],
                 "summary": "Export",
                 "operationId": "Admin_export_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -46035,7 +48421,16 @@
                 ],
                 "summary": "Log",
                 "operationId": "Admin_log_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"
@@ -46256,7 +48651,24 @@
                 ],
                 "summary": "Status Extra Fare",
                 "operationId": "Admin_statusExtraFare_GET",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful response"

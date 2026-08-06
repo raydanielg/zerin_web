@@ -169,7 +169,79 @@ class GenerateOpenApiSpec extends Command
             }
         }
 
-        return null;
+        // Fallback: extract field names from request property/input access
+        return $this->extractFieldsFromRequestAccess($methodSource);
+    }
+
+    private function extractFieldsFromRequestAccess(string $methodSource): ?array
+    {
+        $fields = [];
+        $reserved = ['all', 'validate', 'input', 'get', 'only', 'except', 'has', 'filled',
+            'missing', 'merge', 'replace', 'route', 'header', 'headers', 'session', 'user',
+            'expectsJson', 'ajax', 'wantsJson', 'isMethod', 'is', 'path', 'url', 'fullUrl',
+            'segment', 'segments', 'query', 'post', 'old', 'flash', 'reflash', 'flush',
+            'cookie', 'file', 'hasFile', 'allFiles', 'boolean', 'date', 'integer', 'float',
+            'string', 'collect', 'enum', 'whenHas', 'whenFilled', 'keys', 'bulk', 'dd', 'dump',
+            'bearerToken', 'ip', 'ips', 'userAgent', 'accepts', 'prefers', 'any', 'some',
+            'root', 'host', 'httpHost', 'schemeAndHttpHost', 'encodedPath', 'getUri',
+            'getUriForPath', 'getMimeType', 'getAcceptableContentTypes', 'getLanguages',
+            'getPreferredFormat', 'getContentType', 'getRequestFormat', 'setRequestFormat',
+            'setJson', 'getJson', 'json', 'getContent', 'toArray', 'toJson', 'toSql',
+            'createFromBase', 'create', 'instance', 'capture', 'enableHttpMethodParameterOverride',
+            'setTrustedProxies', 'getTrustedProxies', 'setTrustedHosts', 'getTrustedHosts',
+            'getTrustedHeaderName', 'normalizeQueryString', 'enableCookies', 'hasPreviousSession',
+            'setLaravelSession', 'setUserResolver', 'getUserResolver', 'setRouteResolver',
+            'getRouteResolver', 'authorize', 'authorizeResource', 'attributes', 'setMethod',
+            'getMethod', 'getRealMethod', 'getMimeTypeFromFormat', 'getFormat', 'setFormat',
+            'getRequestUri', 'getBaseUrl', 'getPathInfo', 'getBasePath', 'getScheme',
+            'getPort', 'getUserInfo', 'getHttpHost', 'getHost', 'getQueryString',
+            'isSecure', 'isNoCache', 'isXmlHttpRequest', 'isFromTrustedProxy'];
+
+        // $request->field_name (property access)
+        preg_match_all('/\$request->([a-zA-Z_][a-zA-Z0-9_]*)/', $methodSource, $m1);
+        foreach ($m1[1] as $f) {
+            if (!in_array($f, $reserved) && !isset($fields[$f])) {
+                $fields[$f] = 'string';
+            }
+        }
+
+        // $request['field_name']
+        preg_match_all('/\$request\[\'([a-zA-Z_][a-zA-Z0-9_]*)\'\]/', $methodSource, $m2);
+        foreach ($m2[1] as $f) {
+            if (!isset($fields[$f])) {
+                $fields[$f] = 'string';
+            }
+        }
+
+        // $request->input('field_name')
+        preg_match_all('/\$request->input\([\'"]([a-zA-Z_][a-zA-Z0-9_]*)[\'"]/', $methodSource, $m3);
+        foreach ($m3[1] as $f) {
+            if (!isset($fields[$f])) {
+                $fields[$f] = 'string';
+            }
+        }
+
+        // $request->get('field_name')
+        preg_match_all('/\$request->get\([\'"]([a-zA-Z_][a-zA-Z0-9_]*)[\'"]/', $methodSource, $m4);
+        foreach ($m4[1] as $f) {
+            if (!isset($fields[$f])) {
+                $fields[$f] = 'string';
+            }
+        }
+
+        if (empty($fields)) {
+            return null;
+        }
+
+        $properties = [];
+        foreach ($fields as $name => $type) {
+            $properties[$name] = ['type' => $type];
+        }
+
+        return [
+            'type' => 'object',
+            'properties' => $properties,
+        ];
     }
 
     private function extractBalancedArray(string $text): string
