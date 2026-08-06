@@ -13,14 +13,13 @@
     <link rel="shortcut icon" href="{{ $favicon ? dynamicStorage('storage/app/public/business/' . $favicon) : '' }}"/>
 
     <link href="{{ dynamicAsset('public/assets/admin-module/css/fonts/google.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ dynamicAsset('public/assets/admin-module/css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" href="{{ dynamicAsset('public/assets/admin-module/css/bootstrap-icons.min.css') }}"/>
     <link rel="stylesheet" href="{{ dynamicAsset('public/assets/admin-module/css/toastr.css') }}"/>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', 'Nunito', sans-serif;
+            font-family: 'Nunito', 'Inter', sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -29,43 +28,38 @@
             position: relative;
             overflow-x: hidden;
         }
+
         .bg-layer {
             position: fixed;
             inset: 0;
             z-index: 0;
-            background: #fafafa;
         }
-        .bg-layer::before {
-            content: '';
+        .bg-layer img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .bg-overlay {
             position: absolute;
             inset: 0;
-            background-image: radial-gradient(rgba(13,74,48,0.07) 1.5px, transparent 1.5px);
+            background: linear-gradient(135deg, rgba(2,73,56,0.92) 0%, rgba(2,61,48,0.88) 50%, rgba(1,48,40,0.85) 100%);
+        }
+        .bg-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
             background-size: 24px 24px;
         }
-        .bg-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(90px);
-            opacity: 0.08;
-        }
-        .bg-blob-1 {
-            width: 400px; height: 400px;
-            background: #0d4a30;
-            top: -100px; right: -100px;
-        }
-        .bg-blob-2 {
-            width: 300px; height: 300px;
-            background: #f9ac00;
-            bottom: -80px; left: -80px;
-        }
+
         .login-card {
             position: relative;
             z-index: 1;
             width: 100%;
             max-width: 440px;
             background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            border-radius: 24px;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.12);
             overflow: hidden;
             animation: cardSlideIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
             border: 1px solid rgba(0,0,0,0.04);
@@ -74,37 +68,50 @@
             from { opacity: 0; transform: translateY(24px) scale(0.98); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
+
         .login-header {
-            padding: 40px 32px 20px;
+            background: linear-gradient(135deg, #024938 0%, #013028 100%);
+            padding: 40px 32px 28px;
             text-align: center;
             position: relative;
         }
         .logo-wrap {
-            margin: 0 auto 20px;
+            margin: 0 auto 16px;
+            width: 64px;
+            height: 64px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(4px);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .logo-wrap img {
-            max-width: 120px;
-            max-height: 80px;
+            max-width: 40px;
+            max-height: 40px;
             object-fit: contain;
         }
+        .logo-wrap i {
+            font-size: 28px;
+            color: rgba(255,255,255,0.9);
+        }
         .login-header h2 {
-            color: #111827;
-            font-size: 1.6rem;
+            color: #fff;
+            font-size: 1.5rem;
             font-weight: 800;
             margin-bottom: 4px;
         }
         .login-header p {
-            color: #6b7280;
+            color: rgba(255,255,255,0.7);
             font-size: 0.85rem;
         }
+
         .login-body {
-            padding: 12px 36px 36px;
+            padding: 28px 36px 36px;
         }
+
         .field-group {
-            margin-bottom: 22px;
+            margin-bottom: 20px;
         }
         .field-label {
             display: block;
@@ -136,8 +143,8 @@
             background: #f9fafb;
         }
         .field-input:focus {
-            border-color: #0d4a30;
-            box-shadow: 0 0 0 3px rgba(13,74,48,0.1);
+            border-color: #024938;
+            box-shadow: 0 0 0 3px rgba(2,73,56,0.1);
             background: #fff;
         }
         .pw-toggle {
@@ -153,6 +160,7 @@
             padding: 0;
         }
         .pw-toggle:hover { color: #6b7280; }
+
         .remember-row {
             display: flex;
             align-items: center;
@@ -168,18 +176,19 @@
         .remember-check input {
             width: 16px;
             height: 16px;
-            accent-color: #0d4a30;
+            accent-color: #024938;
             cursor: pointer;
         }
         .remember-check span {
             font-size: 0.82rem;
             color: #6b7280;
         }
+
         .btn-signin {
             width: 100%;
             padding: 13px;
-            background: linear-gradient(135deg, #0d4a30 0%, #0a2e1f 100%);
-            color: #fff;
+            background: linear-gradient(135deg, #f9ac00 0%, #d49700 100%);
+            color: #1a1a1a;
             border: none;
             border-radius: 10px;
             font-size: 0.9rem;
@@ -190,14 +199,16 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            box-shadow: 0 4px 12px rgba(249,172,0,0.25);
         }
         .btn-signin:hover {
             transform: translateY(-1px);
-            box-shadow: 0 8px 20px rgba(13,74,48,0.3);
+            box-shadow: 0 8px 20px rgba(249,172,0,0.35);
         }
         .btn-signin:active {
             transform: translateY(0);
         }
+
         .demo-box {
             margin-top: 20px;
             padding: 14px 16px;
@@ -227,24 +238,26 @@
         .demo-copy-btn:hover {
             background: #e5e7eb;
         }
+
         .login-footer {
             text-align: center;
             margin-top: 24px;
             font-size: 0.75rem;
             color: #9ca3af;
         }
+
         @media (max-width: 480px) {
             .login-card { max-width: 100%; }
-            .login-header { padding: 28px 24px 24px; }
-            .login-body { padding: 8px 24px 28px; }
+            .login-header { padding: 28px 24px 20px; }
+            .login-body { padding: 20px 24px 28px; }
         }
     </style>
 </head>
 
 <body>
 <div class="bg-layer">
-    <div class="bg-blob bg-blob-1"></div>
-    <div class="bg-blob bg-blob-2"></div>
+    <div class="bg-overlay"></div>
+    <div class="bg-pattern"></div>
 </div>
 
 <div class="login-card">
@@ -253,7 +266,7 @@
             @if($logo)
                 <img src="{{ dynamicStorage('storage/app/public/business/' . $logo) }}" alt="Logo">
             @else
-                <i class="bi bi-shield-lock-fill" style="font-size: 40px; color: #0d4a30;"></i>
+                <i class="bi bi-shield-lock-fill"></i>
             @endif
         </div>
         <h2>{{ translate('Sign_In') }}</h2>
@@ -297,6 +310,7 @@
             </div>
 
             <button class="btn-signin" id="signInBtn" type="submit">
+                <i class="bi bi-box-arrow-in-right"></i>
                 <span>{{ translate('sign_in') }}</span>
             </button>
         </form>
