@@ -74,12 +74,27 @@ class PartnerController extends BaseController
 
         [$firstName, $lastName] = $this->splitName($validated['name']);
 
-        $customer = $this->customerService->createExternalCustomer([
-            'first_name' => $firstName,
-            'last_name' => $lastName,
-            'email' => $validated['email'] ?? null,
-            'phone' => $validated['phone'] ?? ('00000000000' . random_int(0, 999)),
-        ]);
+        $email = $validated['email'] ?? null;
+        $phone = $validated['phone'] ?? ('00000000000' . random_int(0, 999));
+
+        $existingCustomer = null;
+        if ($email) {
+            $existingCustomer = \Modules\UserManagement\Entities\User::where('email', $email)->first();
+        }
+        if (!$existingCustomer && $phone) {
+            $existingCustomer = \Modules\UserManagement\Entities\User::where('phone', $phone)->first();
+        }
+
+        if ($existingCustomer) {
+            $customer = $existingCustomer;
+        } else {
+            $customer = $this->customerService->createExternalCustomer([
+                'first_name' => $firstName,
+                'last_name' => $lastName,
+                'email' => $email,
+                'phone' => $phone,
+            ]);
+        }
 
         $partner = Partner::create([
             'name' => $validated['name'],

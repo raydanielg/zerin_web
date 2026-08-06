@@ -38,12 +38,24 @@ class PartnerCreateCommand extends Command
         try {
             [$firstName, $lastName] = $this->splitName($name);
 
-            $customer = $customerService->createExternalCustomer([
-                'first_name' => $firstName,
-                'last_name' => $lastName,
-                'email' => $email,
-                'phone' => $phone,
-            ]);
+            $existingCustomer = null;
+            if ($email) {
+                $existingCustomer = \Modules\UserManagement\Entities\User::where('email', $email)->first();
+            }
+            if (!$existingCustomer && $phone) {
+                $existingCustomer = \Modules\UserManagement\Entities\User::where('phone', $phone)->first();
+            }
+
+            if ($existingCustomer) {
+                $customer = $existingCustomer;
+            } else {
+                $customer = $customerService->createExternalCustomer([
+                    'first_name' => $firstName,
+                    'last_name' => $lastName,
+                    'email' => $email,
+                    'phone' => $phone,
+                ]);
+            }
 
             $partner = Partner::create([
                 'name' => $name,
