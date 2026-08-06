@@ -93,6 +93,13 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('blog_log', fn () => $this->checkAccess('blog_management', 'log'));
         Gate::define('blog_export', fn () => $this->checkAccess('blog_management', 'export'));
 
+        Gate::define('partner_view', fn () => $this->checkAccess('partner_api_management', 'view'));
+        Gate::define('partner_add', fn () => $this->checkAccess('partner_api_management', 'add'));
+        Gate::define('partner_edit', fn () => $this->checkAccess('partner_api_management', 'update'));
+        Gate::define('partner_delete', fn () => $this->checkAccess('partner_api_management', 'delete'));
+        Gate::define('partner_log', fn () => $this->checkAccess('partner_api_management', 'log'));
+        Gate::define('partner_export', fn () => $this->checkAccess('partner_api_management', 'export'));
+
     }
 
     private function checkAccess($module_name, $action){

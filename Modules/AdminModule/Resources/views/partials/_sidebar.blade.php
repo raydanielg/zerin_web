@@ -506,6 +506,18 @@
                     <!---------- End Parcel Management --------------->
                 @endif
 
+                @if(\Illuminate\Support\Facades\Gate::any(['partner_view', 'partner_add', 'partner_edit', 'partner_delete']))
+                    <!---------- Start Partner API Management --------------->
+                    <li class="nav-category" title="{{translate('partner_api_management')}}">{{translate('partner_api_management')}}</li>
+                    <li class="{{Request::is('admin/partner*')? 'active sub-menu-opened' : ''}}">
+                        <a href="{{ route('admin.partner.index') }}">
+                            <i class="bi bi-plug-fill"></i>
+                            <span class="link-title">{{ translate('delivery_partners') }}</span>
+                        </a>
+                    </li>
+                    <!---------- End Partner API Management --------------->
+                @endif
+
                 @if(\Illuminate\Support\Facades\Gate::any(['vehicle_view', 'vehicle_add', 'vehicle_edit', 'vehicle_delete', 'vehicle_log', 'vehicle_export']))
                     <!---------- Start Vehicle Management --------------->
 

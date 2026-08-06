@@ -14,5 +14,6 @@
     "Gateways": false,
     "TransactionManagement": false,
     "BlogManagement": true,
-    "AiModule": true
+    "AiModule": true,
+    "PartnerApiManagement": true
 }

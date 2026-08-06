@@ -30,6 +30,10 @@
     {
       "name": "Shared",
       "description": "Shared or common APIs"
+    },
+    {
+      "name": "Partner",
+      "description": "Partner Delivery API - external systems create delivery orders, get quotes, track status, and receive webhooks"
     }
   ],
   "paths": {
@@ -12815,9 +12819,151 @@
           }
         }
       }
+    },
+    "/api/partner/v1/delivery/quote": {
+      "post": {
+        "tags": ["Partner"],
+        "summary": "Get delivery fare quote",
+        "description": "Returns estimated fare for a parcel delivery between two points. Requires X-API-KEY and X-API-SECRET headers.",
+        "operationId": "PartnerDeliveryQuote",
+        "security": [{ "PartnerAuth": [], "PartnerSecret": [] }],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["pickup_coordinates", "destination_coordinates", "pickup_address", "destination_address", "parcel_category_id", "weight"],
+                "properties": {
+                  "pickup_coordinates": { "type": "array", "items": { "type": "number" }, "description": "[lat, lng]", "example": [-6.823, 39.269] },
+                  "destination_coordinates": { "type": "array", "items": { "type": "number" }, "description": "[lat, lng]", "example": [-6.815, 39.281] },
+                  "pickup_address": { "type": "string", "example": "123 Mlimani City, Dar es Salaam" },
+                  "destination_address": { "type": "string", "example": "456 Kariakoo, Dar es Salaam" },
+                  "parcel_category_id": { "type": "string", "format": "uuid", "description": "UUID of the parcel category" },
+                  "weight": { "type": "number", "minimum": 0, "example": 2.5, "description": "Parcel weight in kg" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Estimated fare details" },
+          "401": { "description": "Unauthorized - invalid or missing API key/secret", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "403": { "description": "Zone not found, route not found, or parcel weight not acceptable", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+        }
+      }
+    },
+    "/api/partner/v1/delivery/orders": {
+      "post": {
+        "tags": ["Partner"],
+        "summary": "Create a delivery order",
+        "description": "Creates a parcel delivery order. The fare is recomputed server-side. Requires X-API-KEY and X-API-SECRET headers.",
+        "operationId": "PartnerDeliveryCreateOrder",
+        "security": [{ "PartnerAuth": [], "PartnerSecret": [] }],
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["pickup_coordinates", "destination_coordinates", "pickup_address", "destination_address", "parcel_category_id", "weight", "payer", "sender_name", "sender_phone", "sender_address", "receiver_name", "receiver_phone", "receiver_address"],
+                "properties": {
+                  "pickup_coordinates": { "type": "array", "items": { "type": "number" }, "description": "[lat, lng]" },
+                  "destination_coordinates": { "type": "array", "items": { "type": "number" }, "description": "[lat, lng]" },
+                  "pickup_address": { "type": "string" },
+                  "destination_address": { "type": "string" },
+                  "pickup_note": { "type": "string", "description": "Optional pickup instructions" },
+                  "note": { "type": "string", "description": "Optional general note" },
+                  "parcel_category_id": { "type": "string", "format": "uuid" },
+                  "weight": { "type": "number", "minimum": 0, "example": 2.5 },
+                  "payer": { "type": "string", "enum": ["sender", "receiver"] },
+                  "sender_name": { "type": "string" },
+                  "sender_phone": { "type": "string" },
+                  "sender_address": { "type": "string" },
+                  "receiver_name": { "type": "string" },
+                  "receiver_phone": { "type": "string" },
+                  "receiver_address": { "type": "string" },
+                  "external_reference": { "type": "string", "description": "Optional partner-side reference" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Delivery order created successfully" },
+          "401": { "description": "Unauthorized", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "403": { "description": "Validation or fare error", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+        }
+      },
+      "get": {
+        "tags": ["Partner"],
+        "summary": "List delivery orders",
+        "description": "Returns a paginated list of the partner's delivery orders. Requires X-API-KEY and X-API-SECRET headers.",
+        "operationId": "PartnerDeliveryListOrders",
+        "security": [{ "PartnerAuth": [], "PartnerSecret": [] }],
+        "parameters": [
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 20 }, "description": "Items per page" },
+          { "name": "offset", "in": "query", "schema": { "type": "integer", "default": 1 }, "description": "Page number" }
+        ],
+        "responses": {
+          "200": { "description": "Paginated list of delivery orders" },
+          "401": { "description": "Unauthorized", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+        }
+      }
+    },
+    "/api/partner/v1/delivery/orders/{id}": {
+      "get": {
+        "tags": ["Partner"],
+        "summary": "Get a single delivery order",
+        "description": "Returns details and current status of a specific delivery order. Requires X-API-KEY and X-API-SECRET headers.",
+        "operationId": "PartnerDeliveryShowOrder",
+        "security": [{ "PartnerAuth": [], "PartnerSecret": [] }],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" }, "description": "Order UUID" }
+        ],
+        "responses": {
+          "200": { "description": "Order details" },
+          "401": { "description": "Unauthorized", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "404": { "description": "Order not found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+        }
+      }
+    },
+    "/api/partner/v1/delivery/orders/{id}/cancel": {
+      "put": {
+        "tags": ["Partner"],
+        "summary": "Cancel a delivery order",
+        "description": "Cancels a delivery order. Only allowed when status is pending or accepted. Requires X-API-KEY and X-API-SECRET headers.",
+        "operationId": "PartnerDeliveryCancelOrder",
+        "security": [{ "PartnerAuth": [], "PartnerSecret": [] }],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" }, "description": "Order UUID" }
+        ],
+        "responses": {
+          "200": { "description": "Order cancelled successfully" },
+          "401": { "description": "Unauthorized", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "403": { "description": "Order cannot be cancelled in current status", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "404": { "description": "Order not found", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+        }
+      }
     }
   },
   "components": {
+    "securitySchemes": {
+      "PartnerAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-KEY",
+        "description": "Partner API key"
+      },
+      "PartnerSecret": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-SECRET",
+        "description": "Partner API secret"
+      }
+    },
     "schemas": {
       "Error": {
         "type": "object",

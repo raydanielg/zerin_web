@@ -1,0 +1,13 @@
+{
+    "name": "PartnerApiManagement",
+    "alias": "partnerapimanagement",
+    "description": "Public/Partner Delivery API - lets external systems create delivery orders, get fare quotes, track status and receive webhooks.",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PartnerApiManagement\\Providers\\PartnerApiManagementServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

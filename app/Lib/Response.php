@@ -1403,3 +1403,18 @@ const AI_SETUP_UPDATE = [
     'response_code' => 'ai_setup_update',
     'message' => 'AI Setup is successfully updated'
 ];
+
+const PARTNER_STORE_200 = [
+    'response_code' => 'partner_store_200',
+    'message' => 'Partner created successfully'
+];
+
+const PARTNER_UPDATE_200 = [
+    'response_code' => 'partner_update_200',
+    'message' => 'Partner updated successfully'
+];
+
+const PARTNER_DESTROY_200 = [
+    'response_code' => 'partner_destroy_200',
+    'message' => 'Partner deleted successfully'
+];
