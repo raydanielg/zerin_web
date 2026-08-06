@@ -4,7 +4,6 @@ namespace Modules\PartnerApiManagement\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Modules\PartnerApiManagement\Entities\Partner;
 use Modules\UserManagement\Service\Interfaces\CustomerServiceInterface;
@@ -23,7 +22,7 @@ class PartnerCreateCommand extends Command
     /**
      * @var string
      */
-    protected $description = 'Create a new delivery API partner and issue its API key/secret pair.';
+    protected $description = 'Create a new delivery API partner and issue its API key and webhook secret.';
 
     public function handle(CustomerServiceInterface $customerService)
     {
@@ -33,7 +32,6 @@ class PartnerCreateCommand extends Command
         $webhook = $this->option('webhook');
 
         $apiKey = 'pk_' . Str::random(24);
-        $apiSecret = Str::random(40);
         $webhookSecret = Str::random(40);
 
         DB::beginTransaction();
@@ -51,7 +49,6 @@ class PartnerCreateCommand extends Command
                 'name' => $name,
                 'email' => $email,
                 'api_key' => $apiKey,
-                'api_secret' => Hash::make($apiSecret),
                 'customer_id' => $customer->id,
                 'webhook_url' => $webhook,
                 'webhook_secret' => $webhookSecret,
@@ -69,10 +66,9 @@ class PartnerCreateCommand extends Command
         $this->table(['Field', 'Value'], [
             ['Partner ID', $partner->id],
             ['API Key', $apiKey],
-            ['API Secret', $apiSecret],
             ['Webhook Secret', $webhookSecret],
         ]);
-        $this->warn('Save the API secret and webhook secret now, they will not be shown again.');
+        $this->warn('Save the webhook secret now, it will not be shown again.');
 
         return self::SUCCESS;
     }

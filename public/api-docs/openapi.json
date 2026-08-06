@@ -22158,8 +22158,7 @@
                 },
                 "security": [
                     {
-                        "PartnerAuth": [],
-                        "PartnerSecret": []
+                        "PartnerAuth": []
                     }
                 ],
                 "requestBody": {
@@ -22259,8 +22258,7 @@
                 },
                 "security": [
                     {
-                        "PartnerAuth": [],
-                        "PartnerSecret": []
+                        "PartnerAuth": []
                     }
                 ],
                 "requestBody": {
@@ -22420,8 +22418,7 @@
                 },
                 "security": [
                     {
-                        "PartnerAuth": [],
-                        "PartnerSecret": []
+                        "PartnerAuth": []
                     }
                 ]
             }
@@ -22480,8 +22477,7 @@
                 },
                 "security": [
                     {
-                        "PartnerAuth": [],
-                        "PartnerSecret": []
+                        "PartnerAuth": []
                     }
                 ]
             }
@@ -22540,8 +22536,7 @@
                 },
                 "security": [
                     {
-                        "PartnerAuth": [],
-                        "PartnerSecret": []
+                        "PartnerAuth": []
                     }
                 ],
                 "requestBody": {
@@ -48718,12 +48713,6 @@
                 "in": "header",
                 "name": "X-API-KEY",
                 "description": "Partner API key"
-            },
-            "PartnerSecret": {
-                "type": "apiKey",
-                "in": "header",
-                "name": "X-API-SECRET",
-                "description": "Partner API secret"
             }
         },
         "schemas": {

@@ -594,7 +594,7 @@ class GenerateOpenApiSpec extends Command
         ];
 
         if ($category === 'Partner') {
-            $op['security'] = [['PartnerAuth' => [], 'PartnerSecret' => []]];
+            $op['security'] = [['PartnerAuth' => []]];
         } elseif (in_array('auth:api', $middleware) || in_array('auth:api-customer', $middleware) || in_array('auth:api-driver', $middleware)) {
             $op['security'] = [['BearerAuth' => []]];
         }
@@ -681,12 +681,6 @@ class GenerateOpenApiSpec extends Command
                         'in' => 'header',
                         'name' => 'X-API-KEY',
                         'description' => 'Partner API key',
-                    ],
-                    'PartnerSecret' => [
-                        'type' => 'apiKey',
-                        'in' => 'header',
-                        'name' => 'X-API-SECRET',
-                        'description' => 'Partner API secret',
                     ],
                 ],
                 'schemas' => [

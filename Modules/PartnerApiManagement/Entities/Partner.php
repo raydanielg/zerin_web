@@ -23,7 +23,6 @@ class Partner extends Model
     ];
 
     protected $hidden = [
-        'api_secret',
         'webhook_secret',
     ];
 

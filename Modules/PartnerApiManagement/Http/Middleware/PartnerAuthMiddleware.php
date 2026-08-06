@@ -5,13 +5,12 @@ namespace Modules\PartnerApiManagement\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Modules\PartnerApiManagement\Entities\Partner;
 
 class PartnerAuthMiddleware
 {
     /**
-     * Authenticates the request using the partner's API key/secret pair and
+     * Authenticates the request using the partner's API key and
      * binds the underlying "customer" user to the api auth guard so that
      * the existing trip/parcel services (which rely on auth('api')->id())
      * work transparently for partner requests.
@@ -19,15 +18,14 @@ class PartnerAuthMiddleware
     public function handle(Request $request, Closure $next)
     {
         $apiKey = $request->header('X-API-KEY');
-        $apiSecret = $request->header('X-API-SECRET');
 
-        if (empty($apiKey) || empty($apiSecret)) {
+        if (empty($apiKey)) {
             return response()->json(responseFormatter(DEFAULT_401), 401);
         }
 
         $partner = Partner::query()->where('api_key', $apiKey)->first();
 
-        if (!$partner || !Hash::check($apiSecret, $partner->api_secret)) {
+        if (!$partner) {
             return response()->json(responseFormatter(DEFAULT_401), 401);
         }
 

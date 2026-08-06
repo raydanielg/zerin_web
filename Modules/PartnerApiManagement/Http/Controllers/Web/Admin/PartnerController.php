@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Modules\PartnerApiManagement\Entities\Partner;
@@ -71,7 +70,6 @@ class PartnerController extends BaseController
         ]);
 
         $apiKey = 'pk_' . Str::random(24);
-        $apiSecret = Str::random(40);
         $webhookSecret = Str::random(40);
 
         [$firstName, $lastName] = $this->splitName($validated['name']);
@@ -87,7 +85,6 @@ class PartnerController extends BaseController
             'name' => $validated['name'],
             'email' => $validated['email'] ?? null,
             'api_key' => $apiKey,
-            'api_secret' => Hash::make($apiSecret),
             'customer_id' => $customer->id,
             'webhook_url' => $validated['webhook_url'] ?? null,
             'webhook_secret' => $webhookSecret,
@@ -97,7 +94,6 @@ class PartnerController extends BaseController
         Toastr::success(ucfirst(PARTNER_STORE_200['message']));
 
         return redirect()->route('admin.partner.show', $partner->id)
-            ->with('api_secret', $apiSecret)
             ->with('webhook_secret', $webhookSecret);
     }
 
@@ -106,10 +102,9 @@ class PartnerController extends BaseController
         $this->authorize('partner_view');
 
         $partner = Partner::with('customer')->findOrFail($id);
-        $apiSecret = session('api_secret');
         $webhookSecret = session('webhook_secret');
 
-        return view('partnerapimanagement::admin.partners.show', compact('partner', 'apiSecret', 'webhookSecret'));
+        return view('partnerapimanagement::admin.partners.show', compact('partner', 'webhookSecret'));
     }
 
     public function edit(string $id): View
@@ -165,17 +160,16 @@ class PartnerController extends BaseController
         return response()->json(['success' => true]);
     }
 
-    public function regenerateSecret(string $id): RedirectResponse
+    public function regenerateApiKey(string $id): RedirectResponse
     {
         $this->authorize('partner_edit');
 
         $partner = Partner::findOrFail($id);
-        $newSecret = Str::random(40);
-        $partner->update(['api_secret' => Hash::make($newSecret)]);
+        $newKey = 'pk_' . Str::random(24);
+        $partner->update(['api_key' => $newKey]);
 
-        Toastr::success('API secret regenerated. Save it now - it won\'t be shown again.');
-        return redirect()->route('admin.partner.show', $partner->id)
-            ->with('api_secret', $newSecret);
+        Toastr::success('API Key regenerated successfully.');
+        return redirect()->route('admin.partner.show', $partner->id);
     }
 
     public function regenerateWebhookSecret(string $id): RedirectResponse
