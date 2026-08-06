@@ -18,7 +18,7 @@
   <script>
     window.onload = function() {
       const ui = SwaggerUIBundle({
-        url: '/api-docs/openapi.json',
+        url: '/api-docs/openapi.json?v=' + Date.now(),
         dom_id: '#swagger-ui',
         presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
         layout: 'StandaloneLayout'
