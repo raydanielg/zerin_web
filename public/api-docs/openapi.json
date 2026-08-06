@@ -1,11 +1,11 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Drivemond API Documentation",
+    "title": "Xerin API Documentation",
     "description": "Auto-generated API docs for Driver, Customer, and Admin endpoints.\n\n- Customer and Driver paths are prefixed with `/api/` (Laravel API routes).\n- Admin paths are web routes served directly under the domain.",
     "version": "1.0.0",
     "contact": {
-      "name": "Drivemond Support"
+      "name": "Xerin Support"
     }
   },
   "servers": [
