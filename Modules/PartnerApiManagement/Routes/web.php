@@ -14,7 +14,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
             Route::put('update/{id}', 'update')->name('update');
             Route::delete('delete/{id}', 'destroy')->name('delete');
             Route::get('status', 'status')->name('status');
-            Route::post('regenerate-secret/{id}', 'regenerateSecret')->name('regenerate-secret');
+            Route::post('regenerate-api-key/{id}', 'regenerateApiKey')->name('regenerate-api-key');
             Route::post('regenerate-webhook-secret/{id}', 'regenerateWebhookSecret')->name('regenerate-webhook-secret');
         });
     });

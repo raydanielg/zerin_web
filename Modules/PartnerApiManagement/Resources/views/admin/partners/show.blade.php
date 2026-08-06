@@ -24,7 +24,7 @@
                                 </div>
                             </div>
 
-                            @if(session('api_secret') || session('webhook_secret'))
+                            @if(session('webhook_secret'))
                                 <div class="alert alert-warning">
                                     <i class="bi bi-exclamation-triangle-fill"></i>
                                     {{ translate('save_credentials_now_warning') }}
@@ -66,25 +66,17 @@
                                     <table class="table table-borderless">
                                         <tr>
                                             <td class="text-muted fw-bold" style="width:180px">{{ translate('api_key') }}</td>
-                                            <td><code>{{ $partner->api_key }}</code></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-muted fw-bold">{{ translate('api_secret') }}</td>
                                             <td>
-                                                @if($apiSecret)
-                                                    <code class="text-danger">{{ $apiSecret }}</code>
-                                                @else
-                                                    <span class="text-muted">{{ translate('hidden_for_security') }}</span>
-                                                    @can('partner_edit')
-                                                        <form action="{{ route('admin.partner.regenerate-secret', $partner->id) }}" method="POST" class="d-inline">
-                                                            @csrf
-                                                            <button type="submit" class="btn btn-outline-warning btn-sm ms-2"
-                                                                    onclick="return confirm('{{ translate('regenerate_api_secret_confirm') }}')">
-                                                                <i class="bi bi-arrow-repeat"></i> {{ translate('regenerate') }}
-                                                            </button>
-                                                        </form>
-                                                    @endcan
-                                                @endif
+                                                <code>{{ $partner->api_key }}</code>
+                                                @can('partner_edit')
+                                                    <form action="{{ route('admin.partner.regenerate-api-key', $partner->id) }}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-outline-warning btn-sm ms-2"
+                                                                onclick="return confirm('{{ translate('regenerate_api_key_confirm') }}')">
+                                                            <i class="bi bi-arrow-repeat"></i> {{ translate('regenerate') }}
+                                                        </button>
+                                                    </form>
+                                                @endcan
                                             </td>
                                         </tr>
                                         <tr>
