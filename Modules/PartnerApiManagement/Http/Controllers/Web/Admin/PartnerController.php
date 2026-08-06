@@ -5,8 +5,10 @@ namespace Modules\PartnerApiManagement\Http\Controllers\Web\Admin;
 use App\Http\Controllers\BaseController;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -25,7 +27,7 @@ class PartnerController extends BaseController
         $this->customerService = $customerService;
     }
 
-    public function index(Request $request): View
+    public function index(?Request $request, ?string $type = null): View|Collection|LengthAwarePaginator|null|callable|RedirectResponse
     {
         $this->authorize('partner_view');
 
